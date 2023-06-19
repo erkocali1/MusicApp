@@ -9,7 +9,7 @@ import javax.inject.Inject
 class GetHomeMusicUseCase @Inject constructor(
     private val musicRepository: MusicRepository
 ) {
-    operator fun invoke(): Flow<ResponseApi> {
+    operator fun invoke(): Flow <List<ResponseApi>> {
         return flow {
             val result = musicRepository.result()
             (result.getOrNull() ?: throw IllegalArgumentException("error message")).also {

@@ -5,5 +5,5 @@ import com.muzo.musicapp.core.data.model.ResponseApi
 
 interface MusicRemoteDataSource {
 
-    suspend fun result():Result<ResponseApi>
+    suspend fun result():Result<List<ResponseApi>>
 }

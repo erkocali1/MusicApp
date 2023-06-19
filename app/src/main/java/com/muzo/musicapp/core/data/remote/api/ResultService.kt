@@ -7,6 +7,6 @@ import retrofit2.http.POST
 interface ResultService {
 
     @GET("search")
-    suspend fun result():ResponseApi
+    suspend fun result():List<ResponseApi>
 
 }

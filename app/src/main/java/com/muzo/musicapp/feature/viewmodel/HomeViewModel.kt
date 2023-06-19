@@ -21,10 +21,10 @@ class HomeViewModel @Inject constructor(
     private val _uiState: MutableStateFlow<HomeUiState> = MutableStateFlow(HomeUiState())
 
     init {
-        getProducts()
+        getMusic()
     }
 
-    private fun getProducts() {
+    private fun getMusic() {
         viewModelScope.launch {
             getHomeMusicUseCase().asReSource().onEach { result ->
                 when (result) {
@@ -38,7 +38,7 @@ class HomeViewModel @Inject constructor(
 
                     is Resource.Success -> {
                         _uiState.value =
-                            _uiState.value.copy(loading = false, products = result.data)
+                            _uiState.value.copy(loading = false, musicList = result.data)
                     }
                 }
             }.launchIn(this)
@@ -49,5 +49,5 @@ class HomeViewModel @Inject constructor(
 
 data class HomeUiState(
     val loading: Boolean = false,
-    val products: List<Music> = listOf(),
+    val musicList: List<ResponseApi> = listOf()
 )
