@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="disabled">#858585</color>
+    <color name="home">#FF0000</color>
+    <color name="discover">#F000F0</color>
+    <color name="search">#00FF00</color>
+    <color name="settings">#0000FF</color>
 </resources>
