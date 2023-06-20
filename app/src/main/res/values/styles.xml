@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Monstserrat">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textSize">36dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="MonstserratSmall">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

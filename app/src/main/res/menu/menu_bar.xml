@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/home"
+        android:id="@+id/sectionOneFragment"
         android:icon="@drawable/ic_home"
         android:title="Home"
         app:cnb_iconColor="@color/home"/>
     <item
-        android:id="@+id/activity"
+        android:id="@+id/sectionTwoFragment"
         android:icon="@drawable/ic_discover"
         android:title="Activity"
         app:cnb_iconColor="@color/search"/>
     <item
-        android:id="@+id/favorites"
+        android:id="@+id/sectionThreeFragment"
         android:icon="@drawable/ic_home"
         android:title="Favorites"
         app:cnb_iconColor="@color/discover" />
     <item
-        android:id="@+id/settings"
+        android:id="@+id/sectionFourFragment"
         android:icon="@drawable/ic_settings"
         android:title="Settings"
         app:cnb_iconColor="@color/settings" />

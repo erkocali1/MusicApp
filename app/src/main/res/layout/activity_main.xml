@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".feature.activities.MainActivity">
+
+    <include layout="@layout/my_toolbar"/>
 
 <fragment
     android:id="@+id/fragmentContainerView"
@@ -14,16 +16,15 @@
     app:defaultNavHost="true"
     app:navGraph="@navigation/nav_graph"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="@id/menu"/>
+    app:layout_constraintBottom_toBottomOf="@id/bottomenu"/>
 
-    <com.ismaeldivita.chipnavigation.ChipNavigationBar
-        android:id="@+id/menu"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomenu"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:cnb_menuResource="@menu/menu_bar"
-        app:cnb_radius="8dp"
-        app:cnb_iconSize="24dp"
-        app:cnb_animationDuration="175"/>
+        app:itemIconTint="@color/black"
+        android:background="@color/login"
+        app:menu="@menu/menu_bar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,4 +7,5 @@
     <color name="discover">#F000F0</color>
     <color name="search">#00FF00</color>
     <color name="settings">#0000FF</color>
+    <color name="login">#E5E7F3</color>
 </resources>
