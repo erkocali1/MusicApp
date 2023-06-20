@@ -7,7 +7,7 @@ import javax.inject.Inject
 class MusicRepositoryImpl @Inject constructor(
     private val musicRemoteDataSource: MusicRemoteDataSource
 ):MusicRepository {
-    override suspend fun result(): Result<List<ResponseApi>> {
+    override suspend fun result(): Result<ResponseApi> {
         return musicRemoteDataSource.result()
     }
 }

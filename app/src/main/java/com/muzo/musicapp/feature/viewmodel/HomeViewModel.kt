@@ -24,7 +24,7 @@ class HomeViewModel @Inject constructor(
         getMusic()
     }
 
-    private fun getMusic() {
+     fun getMusic() {
         viewModelScope.launch {
             getHomeMusicUseCase().asReSource().onEach { result ->
                 when (result) {
@@ -49,5 +49,5 @@ class HomeViewModel @Inject constructor(
 
 data class HomeUiState(
     val loading: Boolean = false,
-    val musicList: List<ResponseApi> = listOf()
+    val musicList: ResponseApi? =null
 )
