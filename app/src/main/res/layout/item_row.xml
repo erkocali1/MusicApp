@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/SignerName"
+            android:id="@+id/signerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/teext"
+            android:id="@+id/songName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -45,12 +45,12 @@
             android:text="selam"
             style="@style/MonstserratSmallSection1"
             app:layout_constraintStart_toEndOf="@+id/IvSigner"
-            app:layout_constraintTop_toBottomOf="@id/SignerName" />
+            app:layout_constraintTop_toBottomOf="@id/signerName" />
 
         <com.muzo.musicapp.feature.customview.CustomView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="@id/SignerName"
+            app:layout_constraintTop_toTopOf="@id/signerName"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="24dp" />
 
