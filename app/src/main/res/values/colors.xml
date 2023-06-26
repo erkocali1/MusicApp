@@ -8,4 +8,8 @@
     <color name="search">#00FF00</color>
     <color name="settings">#0000FF</color>
     <color name="login">#E5E7F3</color>
+    <color name="card">#E3E4EB</color>
+    <color name="button">#E91E63</color>
+    <color name="square">#96C3E7</color>
+
 </resources>

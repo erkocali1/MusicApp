@@ -75,4 +75,10 @@ dependencies {
     //BottomBar
     implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
 
+    //circle
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //pagination
+    def paging_version = "3.1.1"
+    implementation "androidx.paging:paging-runtime:$paging_version"
 }

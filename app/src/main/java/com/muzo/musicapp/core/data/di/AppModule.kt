@@ -2,6 +2,8 @@ package com.muzo.musicapp.core.data.di
 
 import com.muzo.musicapp.core.constants.Constants.BASE_URL
 import com.muzo.musicapp.core.data.remote.api.ResultService
+import com.muzo.musicapp.core.data.remote.source.pagination.ItunesSearchRepository
+import com.muzo.musicapp.core.data.remote.source.pagination.ItunesSearchRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -56,5 +58,7 @@ object AppModule {
     fun provideMusicService(retrofit: Retrofit):ResultService{
         return retrofit.create(ResultService::class.java)
     }
+
+
 
 }

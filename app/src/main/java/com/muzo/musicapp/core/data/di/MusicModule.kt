@@ -4,6 +4,8 @@ import com.muzo.musicapp.core.data.remote.repository.MusicRepository
 import com.muzo.musicapp.core.data.remote.repository.MusicRepositoryImpl
 import com.muzo.musicapp.core.data.remote.source.MusicRemoteDataSource
 import com.muzo.musicapp.core.data.remote.source.MusicRemoteDataSourceImpl
+import com.muzo.musicapp.core.data.remote.source.pagination.ItunesSearchRepository
+import com.muzo.musicapp.core.data.remote.source.pagination.ItunesSearchRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -22,4 +24,11 @@ interface MusicModule {
     fun bindMusicRepository(
         musicRepositoryImpl: MusicRepositoryImpl
     ):MusicRepository
+
+    @Binds
+    fun bindPaginationRepository(
+        pagingRepositoryImpl: ItunesSearchRepositoryImpl
+    ):ItunesSearchRepository
+
+
 }
