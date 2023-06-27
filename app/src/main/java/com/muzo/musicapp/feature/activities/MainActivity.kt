@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
 
-//    private val viewModel: HomeViewModel by viewModels()
     private val viewModelx: PaginationViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -50,7 +50,6 @@ class FirstPageAdapter : PagingDataAdapter<PaginationList, FirstPageAdapter.MyVi
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         val currentItem=getItem(position)
-
         holder.bind(currentItem!!)
 
 

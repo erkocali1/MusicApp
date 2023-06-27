@@ -18,7 +18,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val getHomeMusicUseCase: GetHomeMusicUseCase
 ) : ViewModel() {
-    private val _uiState: MutableStateFlow<HomeUiState> = MutableStateFlow(HomeUiState())
+   val _uiState: MutableStateFlow<HomeUiState> = MutableStateFlow(HomeUiState())
 
     init {
         getMusic()
