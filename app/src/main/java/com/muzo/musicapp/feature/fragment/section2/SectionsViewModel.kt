@@ -30,15 +30,21 @@ class SectionsViewModel @Inject constructor(
     val _uiState :MutableStateFlow<SectionsUiState> = MutableStateFlow(SectionsUiState())
 
     init {
-        getMusicLocal()
+        getMusicLocalOrRemote()
     }
-  private  fun getMusicLocal() {
+    private fun getMusicLocalOrRemote() {
         viewModelScope.launch {
             val localMusicList = localMusicDataSource.getMusicList()
             if (localMusicList.isNotEmpty()) {
-                _uiState.value = _uiState.value.copy(loading = false, musicListLocal =localMusicList)
+                _uiState.value = _uiState.value.copy(loading = false, musicListLocal = localMusicList)
+            } else {
+                getRemoteMusic()
             }
+        }
+    }
 
+    private fun getRemoteMusic() {
+        viewModelScope.launch {
             getHomeMusicUseCase().asReSource().onEach { result ->
                 when (result) {
                     is Resource.Loading -> {
@@ -50,17 +56,16 @@ class SectionsViewModel @Inject constructor(
                     }
 
                     is Resource.Success -> {
-
                         _uiState.value = _uiState.value.copy(loading = false, musicList = result.data)
 
                         val musicLocalDataList = convertToMusicLocalDataList(result.data)
                         localMusicRepository.saveMusicList(musicLocalDataList)
                     }
-
                 }
             }.launchIn(this)
         }
     }
+
     private fun convertToMusicLocalDataList(responseApi: ResponseApi): List<MusicLocalData> {
         return responseApi.results.map { music ->
             MusicLocalData(
