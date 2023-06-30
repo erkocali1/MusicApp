@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class  MusicLocalData(
     @PrimaryKey(autoGenerate = true) val uid: Int,
-    @ColumnInfo(name = "artistName")  val  artistName: Int,
+    @ColumnInfo(name = "artistName")  val  artistName: String,
     @ColumnInfo(name = "trackName")  val trackName: String,
 ) {
 }
