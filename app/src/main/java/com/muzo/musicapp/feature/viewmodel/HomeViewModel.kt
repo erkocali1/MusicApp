@@ -4,8 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.muzo.musicapp.core.common.Resource
 import com.muzo.musicapp.core.common.asReSource
+import com.muzo.musicapp.core.data.local.repository.LocalMainRepository
 import com.muzo.musicapp.core.data.model.Music
 import com.muzo.musicapp.core.data.model.ResponseApi
+import com.muzo.musicapp.core.data.remote.repository.MusicRepository
 import com.muzo.musicapp.domain.usecase.GetHomeMusicUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getHomeMusicUseCase: GetHomeMusicUseCase
+    private val getHomeMusicUseCase: GetHomeMusicUseCase,
 ) : ViewModel() {
    val _uiState: MutableStateFlow<HomeUiState> = MutableStateFlow(HomeUiState())
 

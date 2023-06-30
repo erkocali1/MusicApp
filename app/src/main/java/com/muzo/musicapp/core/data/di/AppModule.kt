@@ -1,12 +1,15 @@
 package com.muzo.musicapp.core.data.di
 
+import android.content.Context
+import androidx.room.Room
 import com.muzo.musicapp.core.constants.Constants.BASE_URL
+import com.muzo.musicapp.core.constants.Constants.DATABASE_NAME
+import com.muzo.musicapp.core.data.local.room.MusicDataBase
 import com.muzo.musicapp.core.data.remote.api.ResultService
-import com.muzo.musicapp.core.data.remote.source.pagination.ItunesSearchRepository
-import com.muzo.musicapp.core.data.remote.source.pagination.ItunesSearchRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,12 +41,12 @@ object AppModule {
             .addInterceptor(httpLoggingInterceptor)
             .build()
     }
+
     @Singleton
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
         setLevel(HttpLoggingInterceptor.Level.BODY)
     }
-
 
 
     @Provides
@@ -55,10 +58,19 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideMusicService(retrofit: Retrofit):ResultService{
+    fun provideMusicService(retrofit: Retrofit): ResultService {
         return retrofit.create(ResultService::class.java)
     }
 
+    @Singleton
+    @Provides
+    fun provideRunDao(db: MusicDataBase) = db.getMusicDao()
+
+
+    @Provides
+    @Singleton
+    fun provideMusicDataBase(@ApplicationContext app: Context) =
+        Room.databaseBuilder(app, MusicDataBase::class.java, DATABASE_NAME).build()
 
 
 }

@@ -1,5 +1,9 @@
 package com.muzo.musicapp.core.data.di
 
+import com.muzo.musicapp.core.data.local.repository.LocalMainRepository
+import com.muzo.musicapp.core.data.local.repository.LocalMainRepositoryImpl
+import com.muzo.musicapp.core.data.local.source.LocalMusicDataSource
+import com.muzo.musicapp.core.data.local.source.LocalMusicDataSourceImpl
 import com.muzo.musicapp.core.data.remote.repository.MusicRepository
 import com.muzo.musicapp.core.data.remote.repository.MusicRepositoryImpl
 import com.muzo.musicapp.core.data.remote.source.MusicRemoteDataSource
@@ -30,5 +34,15 @@ interface MusicModule {
         pagingRepositoryImpl: ItunesSearchRepositoryImpl
     ):ItunesSearchRepository
 
+    @Binds
+    fun bindLocalMainRepository(
+        localMainRepositoryImpl: LocalMainRepositoryImpl
+    ):LocalMainRepository
+
+
+    @Binds
+    fun bindLocalDataSource(
+        localMusicDataSourceImpl: LocalMusicDataSourceImpl
+    ):LocalMusicDataSource
 
 }
