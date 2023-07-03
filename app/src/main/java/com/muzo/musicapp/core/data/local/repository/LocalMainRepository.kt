@@ -7,11 +7,10 @@ import javax.inject.Inject
 interface LocalMainRepository {
 
 
-//    suspend fun insertMusic(musicDataBase: MusicLocalData) = musicDao.insertMusic(musicDataBase)
-//
-//
-//    suspend fun getAllMusic() = musicDao.getAllMusic()
 
       suspend fun saveMusicList(musicList: List<MusicLocalData>)
+
+      suspend fun deleteMusicById(musicId: Int)
+
 
 }

@@ -13,7 +13,10 @@ import com.muzo.musicapp.databinding.FragmentSectionFourBinding
 import com.muzo.musicapp.feature.adapter.ForthPageAdapter
 import com.muzo.musicapp.feature.fragment.section2.SectionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.internal.notify
 
 
 @AndroidEntryPoint
@@ -36,7 +39,11 @@ class SectionFourFragment : Fragment() {
 
 
     private fun setAdapter() {
-        adapter = ForthPageAdapter(list)
+        adapter = ForthPageAdapter(list){item ->
+            lifecycleScope.launch {
+                    viewModel.deleteRoom(item.uid)
+            }
+        }
         binding.apply {
             rv3.adapter = adapter
             rv3.layoutManager =
@@ -65,11 +72,9 @@ class SectionFourFragment : Fragment() {
                             setAdapter()
                         }
                     }
-
                     else -> {
 
                     }
-
                 }
             }
         }

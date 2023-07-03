@@ -61,8 +61,9 @@ class SectionThreeFragment : Fragment() {
                         binding.resultNumber.visibility=View.VISIBLE
                         // Veriler alındığında yapılacak işlemler
                         list = uiState.musicListLocal
-                        binding.resultNumber.text="${uiState.musicListLocal.size} adet sonuc bulundu "
+                        binding.resultNumber.text="${list.size} adet sonuc bulundu "
                         setupAdapter()
+
                     }
                     else -> {
                         // Hata durumunda yapılacak işlemler

@@ -8,6 +8,7 @@
 
 <de.hdodenhof.circleimageview.CircleImageView
     android:id="@+id/IvSigner"
+    app:civ_border_color="@color/black"
     android:layout_width="250dp"
     android:layout_height="250dp"
     android:src="@drawable/ic_arrow"
@@ -108,12 +109,13 @@
 
     <ImageView
         android:id="@+id/iconPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@id/constant3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_search"
+        android:src="@drawable/bttn_music"
         android:layout_marginTop="28dp"/>
 
     <ProgressBar

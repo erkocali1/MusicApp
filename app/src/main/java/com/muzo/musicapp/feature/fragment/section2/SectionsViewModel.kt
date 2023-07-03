@@ -1,5 +1,7 @@
 package com.muzo.musicapp.feature.fragment.section2
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.muzo.musicapp.core.common.Resource
@@ -29,13 +31,18 @@ class SectionsViewModel @Inject constructor(
 
     val _uiState :MutableStateFlow<SectionsUiState> = MutableStateFlow(SectionsUiState())
 
+
+
+
     init {
         getMusicLocalOrRemote()
     }
     private fun getMusicLocalOrRemote() {
         viewModelScope.launch {
             val localMusicList = localMusicDataSource.getMusicList()
+
             if (localMusicList.isNotEmpty()) {
+
                 _uiState.value = _uiState.value.copy(loading = false, musicListLocal = localMusicList)
             } else {
                 getRemoteMusic()
@@ -59,7 +66,10 @@ class SectionsViewModel @Inject constructor(
                         _uiState.value = _uiState.value.copy(loading = false, musicList = result.data)
 
                         val musicLocalDataList = convertToMusicLocalDataList(result.data)
+
                         localMusicRepository.saveMusicList(musicLocalDataList)
+
+
                     }
                 }
             }.launchIn(this)
@@ -78,6 +88,16 @@ class SectionsViewModel @Inject constructor(
             )
         }
     }
+
+    fun deleteRoom(musicId: Int) {
+        viewModelScope.launch {
+            localMusicRepository.deleteMusicById(musicId)
+            val updatedList = _uiState.value.musicListLocal?.toMutableList()
+            updatedList?.removeAll { it.uid == musicId }
+            _uiState.value = _uiState.value.copy(musicListLocal = updatedList)
+        }
+    }
+
 
 }
 

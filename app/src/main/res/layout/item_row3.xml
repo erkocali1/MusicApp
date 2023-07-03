@@ -91,6 +91,7 @@
 
 
             <ImageView
+                android:id="@+id/ic_delete"
                 android:layout_gravity="center"
                 android:layout_width="50dp"
                 android:layout_height="50dp"

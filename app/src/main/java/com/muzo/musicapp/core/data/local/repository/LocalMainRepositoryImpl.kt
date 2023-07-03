@@ -10,4 +10,10 @@ class LocalMainRepositoryImpl @Inject constructor(
     override suspend fun saveMusicList(musicList: List<MusicLocalData>) {
         return musicDao.insertMusic(musicList)
     }
+
+    override suspend fun deleteMusicById(musicId: Int) {
+        return musicDao.deleteMusicByUid(musicId)
+    }
+
+
 }

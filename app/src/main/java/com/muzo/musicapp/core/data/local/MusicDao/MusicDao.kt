@@ -15,4 +15,7 @@ interface MusicDao {
     @Query("SELECT * FROM musicLocalData")
     suspend fun getAllMusic():List<MusicLocalData>
 
+    @Query("DELETE FROM musicLocalData WHERE uid = :musicId")
+    suspend fun deleteMusicByUid(musicId: Int)
+
 }
