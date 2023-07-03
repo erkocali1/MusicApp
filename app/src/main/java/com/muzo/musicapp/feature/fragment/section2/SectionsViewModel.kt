@@ -71,10 +71,14 @@ class SectionsViewModel @Inject constructor(
             MusicLocalData(
                 uid = 0, // Otomatik oluşturulan bir uid değeri atanacak
                 artistName = music.artistName,
-                trackName = music.trackName
+                trackName = music.trackName,
+                releaseDate=music.releaseDate,
+                trackPrice=music.trackPrice.toString(),
+                artworkUrl100=music.artworkUrl100
             )
         }
     }
+
 }
 
 data class SectionsUiState(

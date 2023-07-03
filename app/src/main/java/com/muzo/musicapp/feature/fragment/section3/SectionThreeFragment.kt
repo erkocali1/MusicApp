@@ -8,12 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.muzo.musicapp.R
 import com.muzo.musicapp.core.data.local.room.MusicLocalData
-import com.muzo.musicapp.core.data.model.Music
 import com.muzo.musicapp.databinding.FragmentSectionThreeBinding
-import com.muzo.musicapp.databinding.FragmentSectionTwoBinding
-import com.muzo.musicapp.feature.adapter.SecondPageAdapter
 import com.muzo.musicapp.feature.adapter.ThirdPageAdapter
 import com.muzo.musicapp.feature.fragment.section2.SectionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -65,7 +61,7 @@ class SectionThreeFragment : Fragment() {
                         binding.resultNumber.visibility=View.VISIBLE
                         // Veriler alındığında yapılacak işlemler
                         list = uiState.musicListLocal
-                        binding.resultNumber.text="${uiState.musicList?.resultCount} adet sonuc bulundu "
+                        binding.resultNumber.text="${uiState.musicListLocal.size} adet sonuc bulundu "
                         setupAdapter()
                     }
                     else -> {
