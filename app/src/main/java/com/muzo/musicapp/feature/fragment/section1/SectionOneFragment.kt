@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.muzo.musicapp.R
 import com.muzo.musicapp.databinding.FragmentSectionOneBinding
 import com.muzo.musicapp.feature.adapter.FirstPageAdapter
 import com.muzo.musicapp.feature.viewmodel.PaginationViewModel
@@ -27,14 +29,25 @@ class SectionOneFragment : Fragment() {
     ): View? {
         binding = FragmentSectionOneBinding.inflate(inflater, container, false)
 
-        setupRv()
         loadingData()
 
         return binding.root
     }
 
     private fun loadingData() {
-        mvAdapter = FirstPageAdapter()
+        mvAdapter = FirstPageAdapter{
+
+            item ->
+            val bundle =Bundle()
+            bundle.putString("artworkUrl100",item.artworkUrl100)
+            bundle.putString("trackName",item.trackName)
+            bundle.putString("artistName",item.artistName)
+            bundle.putString("collectionName",item.collectionName)
+            bundle.putString("releaseDate",item.releaseDate)
+            bundle.putString("trackPrice",item.trackPrice.toString())
+            findNavController().navigate(R.id.action_sectionOneFragment_to_detailFragment,bundle)
+
+        }
         binding.rv.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = mvAdapter
@@ -48,11 +61,4 @@ class SectionOneFragment : Fragment() {
         }
     }
 
-    private fun setupRv() {
-        mvAdapter = FirstPageAdapter()
-        binding.rv.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = mvAdapter
-        }
-    }
 }

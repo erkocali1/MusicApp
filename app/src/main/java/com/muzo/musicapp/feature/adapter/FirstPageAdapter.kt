@@ -11,7 +11,7 @@ import com.muzo.musicapp.core.data.model.PaginationList
 
 import com.muzo.musicapp.databinding.ItemRowBinding
 
-class FirstPageAdapter : PagingDataAdapter<PaginationList, FirstPageAdapter.MyViewHolder>(diffCallback) {
+class FirstPageAdapter(val onMusicClickListener: (item: PaginationList) -> Unit) : PagingDataAdapter<PaginationList, FirstPageAdapter.MyViewHolder>(diffCallback) {
 
 
     inner class MyViewHolder(val binding: ItemRowBinding): RecyclerView.ViewHolder(binding.root){
@@ -25,6 +25,10 @@ class FirstPageAdapter : PagingDataAdapter<PaginationList, FirstPageAdapter.MyVi
                 IvSigner.load(imageLink){
                     crossfade(true)
                     crossfade(1000)
+
+                    root.setOnClickListener{
+                        onMusicClickListener(item)
+                    }
                 }
 
             }

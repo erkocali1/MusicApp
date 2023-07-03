@@ -9,7 +9,11 @@
         android:id="@+id/sectionOneFragment"
         android:name="com.muzo.musicapp.feature.fragment.section1.SectionOneFragment"
         android:label="fragment_section_one"
-        tools:layout="@layout/fragment_section_one" />
+        tools:layout="@layout/fragment_section_one" >
+        <action
+            android:id="@+id/action_sectionOneFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/sectionTwoFragment"
         android:name="com.muzo.musicapp.feature.fragment.section2.SectionTwoFragment"
@@ -25,4 +29,9 @@
         android:name="com.muzo.musicapp.feature.fragment.section4.SectionFourFragment"
         android:label="fragment_section_four"
         tools:layout="@layout/fragment_section_four" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.muzo.musicapp.feature.fragment.detailFragment.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>
