@@ -9,13 +9,15 @@ import com.muzo.musicapp.core.common.asReSource
 import com.muzo.musicapp.core.data.local.repository.LocalMainRepository
 import com.muzo.musicapp.core.data.local.room.MusicLocalData
 import com.muzo.musicapp.core.data.local.source.LocalMusicDataSource
-import com.muzo.musicapp.core.data.model.Music
+
 import com.muzo.musicapp.core.data.model.ResponseApi
-import com.muzo.musicapp.core.data.remote.repository.MusicRepository
+import com.muzo.musicapp.domain.usecase.GetDataFromRoomUseCase
+
 import com.muzo.musicapp.domain.usecase.GetHomeMusicUseCase
-import com.muzo.musicapp.feature.viewmodel.HomeUiState
+
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -26,10 +28,13 @@ import javax.inject.Inject
 class SectionsViewModel @Inject constructor(
     private val getHomeMusicUseCase: GetHomeMusicUseCase,
     private val localMusicRepository: LocalMainRepository,
-    private val localMusicDataSource: LocalMusicDataSource
+    private val localMusicDataSource: LocalMusicDataSource,
+    private val getDataFromRoomUseCase: GetDataFromRoomUseCase,
 )  :ViewModel() {
 
     val _uiState :MutableStateFlow<SectionsUiState> = MutableStateFlow(SectionsUiState())
+    val localMusicList: MutableLiveData<List<MusicLocalData>?> = MutableLiveData()
+
 
 
 
@@ -39,11 +44,12 @@ class SectionsViewModel @Inject constructor(
     }
     private fun getMusicLocalOrRemote() {
         viewModelScope.launch {
-            val localMusicList = localMusicDataSource.getMusicList()
 
-            if (localMusicList.isNotEmpty()) {
+            val localMusicListResult = getDataFromRoomUseCase.invoke().firstOrNull()
 
-                _uiState.value = _uiState.value.copy(loading = false, musicListLocal = localMusicList)
+            if (localMusicListResult != null && localMusicListResult.isNotEmpty()) {
+                localMusicList.value = localMusicListResult
+                _uiState.value = _uiState.value.copy(loading = false, musicListLocal = localMusicListResult)
             } else {
                 getRemoteMusic()
             }
@@ -68,6 +74,9 @@ class SectionsViewModel @Inject constructor(
                         val musicLocalDataList = convertToMusicLocalDataList(result.data)
 
                         localMusicRepository.saveMusicList(musicLocalDataList)
+
+
+
 
 
                     }
