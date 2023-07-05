@@ -9,6 +9,7 @@ import com.muzo.musicapp.databinding.ItemRow2Binding
 
 class ThirdPageAdapter(var musicList:List<MusicLocalData>): RecyclerView.Adapter<ThirdPageAdapter.ViewHolder>() {
 
+
     inner class ViewHolder(private val binding : ItemRow2Binding): RecyclerView.ViewHolder(binding.root){
 
         fun bind(item: MusicLocalData){

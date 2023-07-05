@@ -12,6 +12,7 @@ import com.muzo.musicapp.core.data.local.MusicDao.MusicDao
 @Database(
     entities = [MusicLocalData::class],
     version = 1,
+    exportSchema = false
 )
 abstract class MusicDataBase:RoomDatabase() {
 

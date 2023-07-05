@@ -11,19 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.muzo.musicapp.core.data.local.room.MusicLocalData
 import com.muzo.musicapp.databinding.FragmentSectionFourBinding
 import com.muzo.musicapp.feature.adapter.ForthPageAdapter
-import com.muzo.musicapp.feature.fragment.section2.SectionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.internal.notify
 
 
 @AndroidEntryPoint
 class SectionFourFragment : Fragment() {
     private lateinit var binding: FragmentSectionFourBinding
     private lateinit var adapter: ForthPageAdapter
-    private val viewModel: SectionsViewModel by viewModels()
+    private val viewModel: SectionFourViewModel by viewModels()
     private lateinit var list: List<MusicLocalData>
 
 
