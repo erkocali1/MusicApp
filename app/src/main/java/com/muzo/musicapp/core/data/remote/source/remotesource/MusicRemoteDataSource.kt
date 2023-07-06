@@ -1,4 +1,4 @@
-package com.muzo.musicapp.core.data.remote.source
+package com.muzo.musicapp.core.data.remote.source.remotesource
 
 import com.muzo.musicapp.core.data.model.ResponseApi
 

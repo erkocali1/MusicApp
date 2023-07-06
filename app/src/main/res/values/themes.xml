@@ -6,4 +6,14 @@
     </style>
 
     <style name="Theme.MusicApp" parent="Base.Theme.MusicApp" />
+
+    <style name="Base.Theme.MusicApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.SplashScreenAndroid12.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.SplashScreenAndroid12.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

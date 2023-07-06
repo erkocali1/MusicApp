@@ -1,7 +1,7 @@
 package com.muzo.musicapp.core.data.remote.repository
 
 import com.muzo.musicapp.core.data.model.ResponseApi
-import com.muzo.musicapp.core.data.remote.source.MusicRemoteDataSource
+import com.muzo.musicapp.core.data.remote.source.remotesource.MusicRemoteDataSource
 import javax.inject.Inject
 
 class MusicRepositoryImpl @Inject constructor(

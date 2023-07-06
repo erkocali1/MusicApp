@@ -6,8 +6,8 @@ import com.muzo.musicapp.core.data.local.source.LocalMusicDataSource
 import com.muzo.musicapp.core.data.local.source.LocalMusicDataSourceImpl
 import com.muzo.musicapp.core.data.remote.repository.MusicRepository
 import com.muzo.musicapp.core.data.remote.repository.MusicRepositoryImpl
-import com.muzo.musicapp.core.data.remote.source.MusicRemoteDataSource
-import com.muzo.musicapp.core.data.remote.source.MusicRemoteDataSourceImpl
+import com.muzo.musicapp.core.data.remote.source.remotesource.MusicRemoteDataSource
+import com.muzo.musicapp.core.data.remote.source.remotesource.MusicRemoteDataSourceImpl
 import com.muzo.musicapp.core.data.remote.source.pagination.ItunesSearchRepository
 import com.muzo.musicapp.core.data.remote.source.pagination.ItunesSearchRepositoryImpl
 import dagger.Binds
@@ -22,7 +22,7 @@ interface MusicModule {
     @Binds
     fun bindsMusicRemoteService(
         sourceImpl: MusicRemoteDataSourceImpl
-    ):MusicRemoteDataSource
+    ): MusicRemoteDataSource
 
     @Binds
     fun bindMusicRepository(

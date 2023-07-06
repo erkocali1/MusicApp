@@ -3,10 +3,13 @@ package com.muzo.musicapp.feature.activities
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.muzo.musicapp.R
 import com.muzo.musicapp.databinding.ActivityLoginBinding
+import com.muzo.musicapp.feature.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,6 +20,9 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen().apply {
+            loginInfo()
+        }
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -30,11 +36,11 @@ class LoginActivity : AppCompatActivity() {
             sharedPreferences = getSharedPreferences("entryInformation", MODE_PRIVATE)
             val userName = binding.etName.text.toString()
 
-            if (userName.isNotEmpty() ) {
+            if (userName.isNotEmpty()) {
                 val sp = sharedPreferences.edit()
-                sp.putString(userName.toString(), "userName")
+                sp.putString("userName",userName)
                 sp.apply()
-                startActivity(Intent(this , MainActivity::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
             } else
                 alertDialog()
         }
@@ -49,5 +55,16 @@ class LoginActivity : AppCompatActivity() {
             .setPositiveButton("OK") { dialogInterface, it ->
             }
             .show()
+    }
+
+    private fun loginInfo(){
+
+        sharedPreferences = getSharedPreferences("entryInformation", MODE_PRIVATE)
+
+        val authenticationInfo=sharedPreferences.getString("userName","")
+
+        if (authenticationInfo!!.isNotEmpty()){
+            startActivity(Intent(this,MainActivity::class.java ))
+        }
     }
 }
