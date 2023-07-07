@@ -27,27 +27,36 @@
 
         <TextView
             android:id="@+id/signerName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="28dp"
             android:text="selam"
             style="@style/MonstserratSmallSection1"
+            android:textSize="16sp"
+            android:maxLines="1"
             app:layout_constraintStart_toEndOf="@+id/IvSigner"
+            app:layout_constraintEnd_toStartOf="@id/customView"
+            android:layout_marginEnd="5dp"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/songName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
             android:text="selam"
+            android:textSize="14sp"
+            android:maxLines="1"
             style="@style/MonstserratSmallSection1"
             app:layout_constraintStart_toEndOf="@+id/IvSigner"
+            app:layout_constraintEnd_toStartOf="@id/customView"
+            android:layout_marginEnd="5dp"
             app:layout_constraintTop_toBottomOf="@id/signerName" />
 
         <com.muzo.musicapp.feature.customview.CustomView
+            android:id="@+id/customView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@id/signerName"

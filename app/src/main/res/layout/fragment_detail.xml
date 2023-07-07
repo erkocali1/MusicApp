@@ -1,132 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#C6B0B8"
     tools:context=".feature.fragment.detailFragment.DetailFragment">
 
-<de.hdodenhof.circleimageview.CircleImageView
-    android:id="@+id/IvSigner"
-    app:civ_border_color="@color/black"
-    android:layout_width="250dp"
-    android:layout_height="250dp"
-    android:src="@drawable/ic_arrow"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_marginTop="40dp"/>
+    <ImageView
+        android:id="@+id/ivConst"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:src="@drawable/ff"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/IvSigner"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="22dp"
+        android:src="@drawable/ic_arrow"
+        app:civ_border_color="@color/home"
+        app:civ_border_width="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivConst" />
 
     <TextView
         android:id="@+id/trackName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/IvSigner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
         style="@style/Monstserrat"
-        android:text="TrackName"/>
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="TrackName"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivConst" />
 
     <TextView
         android:id="@+id/signerName"
+        style="@style/Monstserrat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/trackName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        style="@style/Monstserrat"
+        android:text="Signer Name"
         android:textSize="16sp"
-        android:text="Signer Name"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/trackName" />
 
     <TextView
         android:id="@+id/constant1"
+        style="@style/Monstserrat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/signerName"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="12dp"
         android:layout_marginTop="26dp"
-        style="@style/Monstserrat"
+        android:text="CollectionName:"
         android:textSize="16sp"
-        android:text="CollectionName:"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signerName" />
 
     <TextView
         android:id="@+id/collectionName"
+        style="@style/Monstserrat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/constant1"
-        app:layout_constraintStart_toEndOf="@id/constant1"
         android:layout_marginStart="12dp"
-        style="@style/Monstserrat"
+        android:text="Colleciton Name:"
         android:textSize="16sp"
-        android:text="Colleciton Name:"/>
+        app:layout_constraintStart_toEndOf="@id/constant1"
+        app:layout_constraintTop_toTopOf="@id/constant1" />
 
     <TextView
         android:id="@+id/constant2"
+        style="@style/Monstserrat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/constant1"
-        app:layout_constraintStart_toStartOf="@id/constant1"
         android:layout_marginTop="26dp"
-        style="@style/Monstserrat"
+        android:text="Track Price:"
         android:textSize="16sp"
-        android:text="Track Price:"/>
+        app:layout_constraintStart_toStartOf="@id/constant1"
+        app:layout_constraintTop_toBottomOf="@id/constant1" />
 
     <TextView
         android:id="@+id/trackPrice"
+        style="@style/Monstserrat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/constant2"
-        app:layout_constraintStart_toEndOf="@id/constant2"
         android:layout_marginStart="12dp"
-        style="@style/Monstserrat"
+        android:maxLines="1"
+        android:text="Track Price:"
         android:textSize="16sp"
-        android:text="Track Price:"/>
+        app:layout_constraintStart_toEndOf="@id/constant2"
+        app:layout_constraintTop_toTopOf="@id/constant2" />
 
     <TextView
         android:id="@+id/constant3"
+        style="@style/Monstserrat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/constant2"
-        app:layout_constraintStart_toStartOf="@id/constant2"
         android:layout_marginTop="26dp"
-        style="@style/Monstserrat"
+        android:text="Release Date"
         android:textSize="16sp"
-        android:text="Release Date"/>
+        app:layout_constraintStart_toStartOf="@id/constant2"
+        app:layout_constraintTop_toBottomOf="@id/constant2" />
 
     <TextView
         android:id="@+id/releaseDate"
+        style="@style/Monstserrat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/constant3"
-        app:layout_constraintStart_toEndOf="@id/constant3"
         android:layout_marginStart="12dp"
-        style="@style/Monstserrat"
+        android:text="Release Date"
         android:textSize="16sp"
-        android:text="Release Date"/>
+        app:layout_constraintStart_toEndOf="@id/constant3"
+        app:layout_constraintTop_toTopOf="@id/constant3" />
 
-    <ImageView
-        android:id="@+id/iconPlay"
+    <SeekBar
+        android:id="@+id/seekBar"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:scaleType="centerCrop"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/constant3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/bttn_music"
+        android:layout_marginStart="25sp"
+        android:layout_marginEnd="25sp"
         android:layout_marginTop="28dp"/>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="36dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_play"
+        app:tint="@color/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekBar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_pause"
+        app:tint="@color/button"
+        app:layout_constraintStart_toEndOf="@id/play"
+        app:layout_constraintTop_toTopOf="@id/play" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_stop"
+        app:tint="@color/button"
+        app:layout_constraintStart_toEndOf="@id/pause"
+        app:layout_constraintTop_toTopOf="@id/play" />
+
+
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

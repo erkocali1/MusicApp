@@ -26,9 +26,9 @@ class FirstPageAdapter(val onMusicClickListener: (item: PaginationList) -> Unit)
                     crossfade(true)
                     crossfade(1000)
 
-                    root.setOnClickListener{
-                        onMusicClickListener(item)
-                    }
+                }
+                root.setOnClickListener{
+                    onMusicClickListener(item)
                 }
 
             }

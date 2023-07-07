@@ -45,6 +45,7 @@ class SectionOneFragment : Fragment() {
             bundle.putString("collectionName",item.collectionName)
             bundle.putString("releaseDate",item.releaseDate)
             bundle.putString("trackPrice",item.trackPrice.toString())
+            bundle.putString("trackUrl",item.previewUrl)
             findNavController().navigate(R.id.action_sectionOneFragment_to_detailFragment,bundle)
 
         }

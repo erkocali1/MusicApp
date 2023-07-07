@@ -3,13 +3,11 @@ package com.muzo.musicapp.feature.activities
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.muzo.musicapp.R
 import com.muzo.musicapp.databinding.ActivityLoginBinding
-import com.muzo.musicapp.feature.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
             if (userName.isNotEmpty()) {
                 val sp = sharedPreferences.edit()
-                sp.putString("userName",userName)
+                sp.putString("userName", userName)
                 sp.apply()
                 startActivity(Intent(this, MainActivity::class.java))
             } else
@@ -57,14 +55,14 @@ class LoginActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun loginInfo(){
+    private fun loginInfo() {
 
         sharedPreferences = getSharedPreferences("entryInformation", MODE_PRIVATE)
 
-        val authenticationInfo=sharedPreferences.getString("userName","")
+        val authenticationInfo = sharedPreferences.getString("userName", "")
 
-        if (authenticationInfo!!.isNotEmpty()){
-            startActivity(Intent(this,MainActivity::class.java ))
+        if (authenticationInfo!!.isNotEmpty()) {
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 }

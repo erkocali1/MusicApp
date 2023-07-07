@@ -3,6 +3,7 @@
     <style name="Monstserrat">
         <item name="android:fontFamily">@font/montserrat_regular</item>
         <item name="android:textSize">36dp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
