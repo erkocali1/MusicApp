@@ -47,7 +47,6 @@ class DetailFragment : Fragment() {
                     uiState.loading -> {
                         binding.apply {
                             progressBar.visibility = View.VISIBLE
-                            IvSigner.visibility = View.GONE
                             trackName.visibility = View.GONE
                             signerName.visibility = View.GONE
                             collectionName.visibility = View.GONE
@@ -61,7 +60,6 @@ class DetailFragment : Fragment() {
                         binding.apply {
                             getData()
                             progressBar.visibility = View.GONE
-                            IvSigner.visibility = View.GONE
                             trackName.visibility = View.VISIBLE
                             signerName.visibility = View.VISIBLE
                             collectionName.visibility = View.VISIBLE
@@ -84,10 +82,10 @@ class DetailFragment : Fragment() {
         val releaseDate = arguments?.getString("releaseDate")
 
 
-        binding.IvSigner.load(Ivurl) {
-            crossfade(true)
-            crossfade(1000)
-        }
+//        binding.IvSigner.load(Ivurl) {
+//            crossfade(true)
+//            crossfade(1000)
+//        }
         binding.trackName.text = trackName
         binding.signerName.text = signerName
         binding.collectionName.text = collectionName

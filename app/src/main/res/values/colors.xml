@@ -11,5 +11,10 @@
     <color name="card">#E3E4EB</color>
     <color name="button">#E91E63</color>
     <color name="square">#96C3E7</color>
+    <color name="musicbutton">#99B1C5</color>
+    <color name="textDetail">#fa71cd</color>
+    <color name="textDetailexp">#667eea</color>
+
+
 
 </resources>

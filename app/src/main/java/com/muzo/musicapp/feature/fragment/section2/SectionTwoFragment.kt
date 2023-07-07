@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.muzo.musicapp.core.data.model.Music
 import com.muzo.musicapp.databinding.FragmentSectionTwoBinding
@@ -35,10 +36,11 @@ class SectionTwoFragment : Fragment() {
     private fun setupAdapter() {
         adapter = SecondPageAdapter(list)
         binding.rv2.apply {
-            layoutManager = LinearLayoutManager(requireContext())
+            layoutManager = GridLayoutManager(requireContext(), 2) // spanCount değerini belirleyin
             adapter = this@SectionTwoFragment.adapter
         }
     }
+
 
     private fun observeData() {
         lifecycleScope.launch {
