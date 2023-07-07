@@ -24,8 +24,6 @@ class ForthPageAdapter(var musicList:List<MusicLocalData>,val onDeleteClickListe
                 val imageLink=item.artworkUrl100
 
                 IvSigner.load(imageLink){
-                    crossfade(true)
-                    crossfade(1000)
 
                     icDelete.setOnClickListener {
                         onDeleteClickListener(item)

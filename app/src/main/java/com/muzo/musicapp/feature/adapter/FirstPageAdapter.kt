@@ -23,9 +23,6 @@ class FirstPageAdapter(val onMusicClickListener: (item: PaginationList) -> Unit)
                 songName.text=item.trackName
                 val imageLink=item.artworkUrl100
                 IvSigner.load(imageLink){
-                    crossfade(true)
-                    crossfade(1000)
-
                 }
                 root.setOnClickListener{
                     onMusicClickListener(item)
