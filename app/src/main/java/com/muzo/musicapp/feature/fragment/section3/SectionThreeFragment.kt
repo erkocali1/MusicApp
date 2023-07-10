@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.muzo.musicapp.core.data.local.room.MusicLocalData
 import com.muzo.musicapp.databinding.FragmentSectionThreeBinding
 import com.muzo.musicapp.feature.adapter.ThirdPageAdapter
+import com.muzo.musicapp.feature.fragment.BaseFragment
+import com.muzo.musicapp.feature.fragment.detailFragment.DetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class SectionThreeFragment : Fragment() {
+class SectionThreeFragment : BaseFragment() {
     private lateinit var binding:FragmentSectionThreeBinding
     private lateinit var adapter: ThirdPageAdapter
     private val viewModel: SectionThreeViewModel by viewModels()
@@ -29,7 +31,8 @@ class SectionThreeFragment : Fragment() {
     ): View? {
         binding= FragmentSectionThreeBinding.inflate(LayoutInflater.from(context),container,false)
 
-
+        val name=binding.included
+        userInfo(name)
         observeData()
         viewModel.observeLocalMusicChanges()
 
@@ -61,7 +64,7 @@ class SectionThreeFragment : Fragment() {
                         binding.resultNumber.visibility=View.VISIBLE
 
                         list = uiState.musicListLocal
-                        binding.resultNumber.text="${list.size} adet sonuc bulundu "
+                        binding.resultNumber.text="${list.size} results found "
                         setupAdapter()
 
                     }

@@ -1,6 +1,7 @@
 package com.muzo.musicapp.feature.fragment.section1
 
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,14 +14,17 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.muzo.musicapp.R
 import com.muzo.musicapp.databinding.FragmentSectionOneBinding
+import com.muzo.musicapp.databinding.MyToolbarBinding
 import com.muzo.musicapp.feature.adapter.FirstPageAdapter
+import com.muzo.musicapp.feature.fragment.BaseFragment
+import com.muzo.musicapp.feature.fragment.detailFragment.DetailFragment
 import com.muzo.musicapp.feature.viewmodel.PaginationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SectionOneFragment : Fragment() {
+class SectionOneFragment : BaseFragment() {
     private lateinit var binding: FragmentSectionOneBinding
     private lateinit var mvAdapter: FirstPageAdapter
     private val viewModel: PaginationViewModel by viewModels()
@@ -31,7 +35,12 @@ class SectionOneFragment : Fragment() {
     ): View? {
         binding = FragmentSectionOneBinding.inflate(inflater, container, false)
 
+        val name=binding.included
+        userInfo(name)
         loadingData()
+
+
+
 
         return binding.root
     }
@@ -74,6 +83,10 @@ class SectionOneFragment : Fragment() {
                 }
 
         }
+    }
+
+    private fun loginInfo(){
+
     }
 
 }

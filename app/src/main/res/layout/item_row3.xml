@@ -3,26 +3,26 @@
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="40dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:layout_margin="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
-        android:layout_width="300dp"
-        android:layout_height="450dp">
-
+        android:background="@drawable/gradient_backround2"
+        android:layout_width="250dp"
+        android:layout_height="480dp">
 
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/IvSigner"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_marginTop="60dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/ic_discover"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/deleteIc" />
 
 
         <TextView
@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="36dp"
+            android:maxLines="1"
             android:text="hello"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/IvSigner" />
@@ -42,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:maxLines="1"
             android:layout_marginTop="16dp"
             android:text="hello"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +54,7 @@
             style="@style/MonstserratSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="hello"
@@ -63,6 +66,7 @@
             style="@style/MonstserratSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="hello"
@@ -72,30 +76,31 @@
 
         <com.muzo.musicapp.feature.customview.CustomView
             android:id="@+id/customView"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
-            app:layout_constraintBottom_toBottomOf="@id/trackPrice"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="25dp"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/deleteIc"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
             android:backgroundTint="@color/home"
             app:cardCornerRadius="30dp"
-            android:id="@+id/deleteIc"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
 
             <ImageView
                 android:id="@+id/ic_delete"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_gravity="center"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_delete"/>
+                android:src="@drawable/ic_delete" />
 
 
         </androidx.cardview.widget.CardView>

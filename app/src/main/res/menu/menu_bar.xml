@@ -4,21 +4,25 @@
     <item
         android:id="@+id/sectionOneFragment"
         android:icon="@drawable/ic_home"
-        android:title="Home"
+        android:title="Section1"
+        android:menuCategory="secondary"
         app:cnb_iconColor="@color/home"/>
     <item
         android:id="@+id/sectionTwoFragment"
         android:icon="@drawable/ic_discover"
-        android:title="Activity"
+        android:title="Section2"
+        android:menuCategory="secondary"
         app:cnb_iconColor="@color/search"/>
     <item
         android:id="@+id/sectionThreeFragment"
         android:icon="@drawable/ic_home"
-        android:title="Favorites"
+        android:menuCategory="secondary"
+        android:title="Section3"
         app:cnb_iconColor="@color/discover" />
     <item
         android:id="@+id/sectionFourFragment"
         android:icon="@drawable/ic_settings"
-        android:title="Settings"
+        android:menuCategory="secondary"
+        android:title="Section4"
         app:cnb_iconColor="@color/settings" />
 </menu>

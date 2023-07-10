@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomBar() {
         navController = Navigation.findNavController(this, R.id.fragmentContainerView)
         NavigationUI.setupWithNavController(binding.bottomenu, navController)
+
     }
-
-
 }

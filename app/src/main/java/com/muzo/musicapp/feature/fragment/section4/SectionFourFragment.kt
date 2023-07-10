@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.muzo.musicapp.core.data.local.room.MusicLocalData
 import com.muzo.musicapp.databinding.FragmentSectionFourBinding
 import com.muzo.musicapp.feature.adapter.ForthPageAdapter
+import com.muzo.musicapp.feature.fragment.BaseFragment
+import com.muzo.musicapp.feature.fragment.detailFragment.DetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class SectionFourFragment : Fragment() {
+class SectionFourFragment : BaseFragment() {
     private lateinit var binding: FragmentSectionFourBinding
     private lateinit var adapter: ForthPageAdapter
     private val viewModel: SectionFourViewModel by viewModels()
@@ -28,6 +30,9 @@ class SectionFourFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSectionFourBinding.inflate(LayoutInflater.from(context), container, false)
+
+        val name=binding.included
+        userInfo(name)
         observeData()
         return binding.root
 

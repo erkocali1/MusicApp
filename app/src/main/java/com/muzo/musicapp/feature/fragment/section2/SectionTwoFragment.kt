@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.muzo.musicapp.core.data.model.Music
 import com.muzo.musicapp.databinding.FragmentSectionTwoBinding
 import com.muzo.musicapp.feature.adapter.SecondPageAdapter
+import com.muzo.musicapp.feature.fragment.BaseFragment
+import com.muzo.musicapp.feature.fragment.detailFragment.DetailFragment
 import com.muzo.musicapp.feature.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SectionTwoFragment : Fragment() {
+class SectionTwoFragment : BaseFragment() {
     private lateinit var binding: FragmentSectionTwoBinding
     private lateinit var adapter: SecondPageAdapter
     private lateinit var list:List<Music>
@@ -27,6 +29,9 @@ class SectionTwoFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding= FragmentSectionTwoBinding.inflate(LayoutInflater.from(context),container,false)
 
+
+        val name=binding.included
+        userInfo(name)
         observeData()
         return binding.root
 
@@ -57,7 +62,7 @@ class SectionTwoFragment : Fragment() {
                         binding.resultNumber.visibility=View.VISIBLE
                         // Veriler alındığında yapılacak işlemler
                         list = uiState.musicList.results
-                        binding.resultNumber.text="${uiState.musicList.resultCount} adet sonuc bulundu "
+                        binding.resultNumber.text="${uiState.musicList.resultCount} results found "
                         setupAdapter()
                     }
                     else -> {

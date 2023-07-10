@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.muzo.musicapp.databinding.FragmentDetailBinding
+import com.muzo.musicapp.feature.fragment.BaseFragment
 import com.muzo.musicapp.feature.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -22,10 +23,11 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class DetailFragment : Fragment() {
+class DetailFragment : BaseFragment() {
     private lateinit var binding: FragmentDetailBinding
     private val viewModel: HomeViewModel by viewModels()
     private var mediaPlayer: MediaPlayer? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -162,5 +164,11 @@ class DetailFragment : Fragment() {
             }
         }, 1000)
     }
+    override fun onPause() {
+        super.onPause()
+        pauseMusic()
+        binding.seekBar.setProgress(0,true)
+    }
+
 
 }
