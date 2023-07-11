@@ -1,4 +1,4 @@
-package com.muzo.musicapp.feature.viewmodel
+package com.muzo.musicapp.feature.fragment.section1
 
 import androidx.lifecycle.ViewModel
 

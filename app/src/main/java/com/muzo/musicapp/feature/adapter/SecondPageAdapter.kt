@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.muzo.musicapp.core.data.model.Music
+import com.muzo.musicapp.core.data.model.PaginationList
 import com.muzo.musicapp.databinding.ItemRow2Binding
 import com.muzo.musicapp.databinding.ItemRow5Binding
 
-class SecondPageAdapter(var musicList:List<Music>):RecyclerView.Adapter<SecondPageAdapter.ViewHolder>() {
+class SecondPageAdapter(var musicList:List<Music>,val onMusicClickListener: (item: Music) -> Unit):RecyclerView.Adapter<SecondPageAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding : ItemRow5Binding):RecyclerView.ViewHolder(binding.root){
 
@@ -19,6 +20,9 @@ class SecondPageAdapter(var musicList:List<Music>):RecyclerView.Adapter<SecondPa
                 songName.text=item.trackName
                 val url=item.artworkUrl100
                 IvSigner.load(url)
+                root.setOnClickListener {
+                    onMusicClickListener(item)
+                }
             }
         }
     }

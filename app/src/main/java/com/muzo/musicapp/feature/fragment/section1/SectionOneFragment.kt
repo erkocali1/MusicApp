@@ -1,24 +1,20 @@
 package com.muzo.musicapp.feature.fragment.section1
 
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.muzo.musicapp.R
+import com.muzo.musicapp.core.data.model.PaginationList
 import com.muzo.musicapp.databinding.FragmentSectionOneBinding
-import com.muzo.musicapp.databinding.MyToolbarBinding
 import com.muzo.musicapp.feature.adapter.FirstPageAdapter
 import com.muzo.musicapp.feature.fragment.BaseFragment
-import com.muzo.musicapp.feature.fragment.detailFragment.DetailFragment
-import com.muzo.musicapp.feature.viewmodel.PaginationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -35,7 +31,7 @@ class SectionOneFragment : BaseFragment() {
     ): View? {
         binding = FragmentSectionOneBinding.inflate(inflater, container, false)
 
-        val name=binding.included
+        val name = binding.included
         userInfo(name)
         loadingData()
 
@@ -46,20 +42,9 @@ class SectionOneFragment : BaseFragment() {
     }
 
     private fun loadingData() {
-        mvAdapter = FirstPageAdapter{
+        mvAdapter = FirstPageAdapter { item ->
 
-            item ->
-            val bundle =Bundle()
-            bundle.putString("artworkUrl100",item.artworkUrl100)
-            bundle.putString("trackName",item.trackName)
-            bundle.putString("artistName",item.artistName)
-            bundle.putString("collectionName",item.collectionName)
-            bundle.putString("releaseDate",item.releaseDate)
-            bundle.putString("trackPrice",item.trackPrice.toString())
-            bundle.putString("trackUrl",item.previewUrl)
-
-            findNavController().navigate(R.id.action_sectionOneFragment_to_detailFragment,bundle)
-
+            navigateToDetailFragment(item)
 
         }
         binding.rv.apply {
@@ -85,8 +70,21 @@ class SectionOneFragment : BaseFragment() {
         }
     }
 
-    private fun loginInfo(){
+    private fun navigateToDetailFragment(item: PaginationList) {
+
+        val bundle = Bundle().apply {
+            putString("artworkUrl100", item.artworkUrl100)
+            putString("trackName", item.trackName)
+            putString("artistName", item.artistName)
+            putString("collectionName", item.collectionName)
+            putString("releaseDate", item.releaseDate)
+            putString("trackPrice", item.trackPrice.toString())
+            putString("trackUrl", item.previewUrl)
+        }
+
+        findNavController().navigate(R.id.action_sectionOneFragment_to_detailFragment, bundle)
 
     }
+
 
 }

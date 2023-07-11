@@ -1,7 +1,8 @@
 package com.muzo.musicapp.core.data.local.source
 
 import com.muzo.musicapp.core.data.local.MusicDao.MusicDao
-import com.muzo.musicapp.core.data.local.room.MusicLocalData
+import com.muzo.musicapp.core.data.local.room.modelclass.LastClikedMusic
+import com.muzo.musicapp.core.data.local.room.modelclass.MusicLocalData
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -18,6 +19,14 @@ class LocalMusicDataSourceImpl @Inject constructor(
 
     override suspend fun deleteMusicByUid(musicId: Int) {
        return musicDao.deleteMusicByUid(musicId)
+    }
+
+    override suspend fun getLastClickedMusic(): Flow<List<LastClikedMusic>> {
+        return musicDao.getAllLastClickedMusic()
+    }
+
+    override suspend fun insertLastClickedMusic(lastClickedMusic: List<LastClikedMusic>) {
+        return musicDao.insertLastClickedMusic(lastClickedMusic)
     }
 
 }

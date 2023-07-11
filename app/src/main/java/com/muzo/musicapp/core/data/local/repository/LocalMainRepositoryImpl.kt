@@ -1,6 +1,7 @@
 package com.muzo.musicapp.core.data.local.repository
 
-import com.muzo.musicapp.core.data.local.room.MusicLocalData
+import com.muzo.musicapp.core.data.local.room.modelclass.LastClikedMusic
+import com.muzo.musicapp.core.data.local.room.modelclass.MusicLocalData
 import com.muzo.musicapp.core.data.local.source.LocalMusicDataSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -18,6 +19,14 @@ class LocalMainRepositoryImpl @Inject constructor(
 
     override suspend fun getAllDataFromRoom(): Flow<List<MusicLocalData>> {
         return musicDataSource.getMusicList()
+    }
+
+    override suspend fun saveLastClickedMusic(lastClikedMusic: List<LastClikedMusic>) {
+        return musicDataSource.insertLastClickedMusic(lastClikedMusic)
+    }
+
+    override suspend fun getallLastClickedMusic(): Flow<List<LastClikedMusic>> {
+        return  musicDataSource.getLastClickedMusic()
     }
 
 

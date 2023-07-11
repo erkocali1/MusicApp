@@ -18,12 +18,20 @@
         android:id="@+id/sectionTwoFragment"
         android:name="com.muzo.musicapp.feature.fragment.section2.SectionTwoFragment"
         android:label="fragment_section_two"
-        tools:layout="@layout/fragment_section_two" />
+        tools:layout="@layout/fragment_section_two" >
+        <action
+            android:id="@+id/action_sectionTwoFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/sectionThreeFragment"
         android:name="com.muzo.musicapp.feature.fragment.section3.SectionThreeFragment"
         android:label="fragment_section_three"
-        tools:layout="@layout/fragment_section_three" />
+        tools:layout="@layout/fragment_section_three" >
+        <action
+            android:id="@+id/action_sectionThreeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/sectionFourFragment"
         android:name="com.muzo.musicapp.feature.fragment.section4.SectionFourFragment"

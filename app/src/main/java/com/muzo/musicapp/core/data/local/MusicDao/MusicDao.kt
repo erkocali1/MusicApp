@@ -4,8 +4,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
-import com.muzo.musicapp.core.data.local.room.MusicLocalData
+import com.muzo.musicapp.core.data.local.room.modelclass.LastClikedMusic
+import com.muzo.musicapp.core.data.local.room.modelclass.MusicLocalData
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -21,6 +21,13 @@ interface MusicDao {
     @Query("DELETE FROM musicLocalData WHERE uid = :musicId")
     suspend fun deleteMusicByUid(musicId: Int)
 
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertLastClickedMusic(lastClickedMusic:List<LastClikedMusic>)
+
+
+    @Query("SELECT * FROM last_clicked_music")
+    fun getAllLastClickedMusic(): Flow<List<LastClikedMusic>>
 
 
 }

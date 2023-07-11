@@ -1,4 +1,4 @@
-package com.muzo.musicapp.core.data.local.room
+package com.muzo.musicapp.core.data.local.room.modelclass
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

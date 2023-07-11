@@ -1,23 +1,23 @@
 package com.muzo.musicapp.feature.fragment.detailFragment
 
+import android.annotation.SuppressLint
 import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.os.HandlerCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import coil.load
+import com.muzo.musicapp.R
 import com.muzo.musicapp.databinding.FragmentDetailBinding
 import com.muzo.musicapp.feature.fragment.BaseFragment
-import com.muzo.musicapp.feature.viewmodel.HomeViewModel
+import com.muzo.musicapp.feature.fragment.section2.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
@@ -35,7 +35,7 @@ class DetailFragment : BaseFragment() {
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
 
 
-
+        heartClicked()
         loadData()
         clickListener()
         return binding.root
@@ -169,6 +169,41 @@ class DetailFragment : BaseFragment() {
         pauseMusic()
         binding.seekBar.setProgress(0,true)
     }
+
+    private fun heartClicked() {
+        val emptyHeartDrawableName = "ic_fav"
+        val filledHeartDrawableName = "ic_full_fav"
+
+        binding.heartIv.tag = emptyHeartDrawableName
+
+        binding.heartIv.setOnClickListener {
+            val currentDrawableName = binding.heartIv.tag as? String
+
+            if (currentDrawableName == emptyHeartDrawableName) {
+                binding.heartIv.setImageResource(resources.getIdentifier(filledHeartDrawableName, "drawable", requireContext().packageName))
+                binding.heartIv.setTag(filledHeartDrawableName)
+
+                toastMessage("This song added fav")
+
+
+            } else {
+                // Boş kalp görselini yükleyin
+                binding.heartIv.setImageResource(resources.getIdentifier(emptyHeartDrawableName, "drawable", requireContext().packageName))
+                binding.heartIv.setTag(emptyHeartDrawableName)
+
+                toastMessage("This song distract fav")
+            }
+        }
+    }
+    private fun toastMessage(message:String){
+
+        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+
+    }
+
+
+
+
 
 
 }

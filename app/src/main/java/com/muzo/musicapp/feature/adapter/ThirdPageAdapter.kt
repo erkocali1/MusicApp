@@ -3,20 +3,25 @@ package com.muzo.musicapp.feature.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.muzo.musicapp.core.data.local.room.MusicLocalData
+import com.muzo.musicapp.core.data.local.room.modelclass.LastClikedMusic
+import com.muzo.musicapp.core.data.local.room.modelclass.MusicLocalData
+import com.muzo.musicapp.core.data.model.Music
 import com.muzo.musicapp.databinding.ItemRow2Binding
 
 
-class ThirdPageAdapter(var musicList:List<MusicLocalData>): RecyclerView.Adapter<ThirdPageAdapter.ViewHolder>() {
+class ThirdPageAdapter(var musicList:List<LastClikedMusic>,val onMusicClickListener: (item: LastClikedMusic) -> Unit ): RecyclerView.Adapter<ThirdPageAdapter.ViewHolder>() {
 
 
     inner class ViewHolder(private val binding : ItemRow2Binding): RecyclerView.ViewHolder(binding.root){
 
-        fun bind(item: MusicLocalData){
+        fun bind(item: LastClikedMusic){
 
             binding.apply {
                 signerName.text=item.artistName
                 songName.text=item.trackName
+                root.setOnClickListener {
+                    onMusicClickListener(item)
+                }
             }
         }
     }

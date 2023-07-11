@@ -4,12 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.muzo.musicapp.core.data.local.room.MusicLocalData
-import com.muzo.musicapp.core.data.model.PaginationList
+import com.muzo.musicapp.core.data.local.room.modelclass.MusicLocalData
 import com.muzo.musicapp.databinding.ItemRow3Binding
 
 
-class ForthPageAdapter(var musicList:List<MusicLocalData>,val onDeleteClickListener: (item: MusicLocalData) -> Unit): RecyclerView.Adapter<ForthPageAdapter.ViewHolder>() {
+class ForthPageAdapter(var musicList:List<MusicLocalData>, val onDeleteClickListener: (item: MusicLocalData) -> Unit): RecyclerView.Adapter<ForthPageAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding : ItemRow3Binding): RecyclerView.ViewHolder(binding.root){
 

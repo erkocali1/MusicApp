@@ -1,13 +1,13 @@
-package com.muzo.musicapp.feature.viewmodel
+package com.muzo.musicapp.feature.fragment.section2
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.muzo.musicapp.core.common.Resource
 import com.muzo.musicapp.core.common.asReSource
-import com.muzo.musicapp.core.data.local.repository.LocalMainRepository
+import com.muzo.musicapp.core.data.local.room.modelclass.LastClikedMusic
+import com.muzo.musicapp.core.data.local.source.LocalMusicDataSource
 import com.muzo.musicapp.core.data.model.Music
 import com.muzo.musicapp.core.data.model.ResponseApi
-import com.muzo.musicapp.core.data.remote.repository.MusicRepository
 import com.muzo.musicapp.domain.usecase.GetHomeMusicUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,6 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val getHomeMusicUseCase: GetHomeMusicUseCase,
+    private val localMusicDataSource: LocalMusicDataSource,
 ) : ViewModel() {
    val _uiState: MutableStateFlow<HomeUiState> = MutableStateFlow(HomeUiState())
 
@@ -46,8 +47,30 @@ class HomeViewModel @Inject constructor(
             }.launchIn(this)
         }
     }
-}
+    suspend fun saveLastClicked(item:List<LastClikedMusic>){
 
+        localMusicDataSource.insertLastClickedMusic(item)
+    }
+
+    fun convertToMusicLocalDataList(music: Music): List<LastClikedMusic> {
+        return listOf(
+            LastClikedMusic(
+                uid = 0, // Otomatik oluşturulan bir uid değeri atanacak
+                artistName = music.artistName,
+                trackName = music.trackName,
+                releaseDate = music.releaseDate,
+                trackPrice = music.trackPrice.toString(),
+                artworkUrl100 = music.artworkUrl100,
+                previewUrl = music.previewUrl,
+                collectionName = music.collectionName
+
+            )
+        )
+    }
+
+
+
+}
 
 data class HomeUiState(
     val loading: Boolean = false,

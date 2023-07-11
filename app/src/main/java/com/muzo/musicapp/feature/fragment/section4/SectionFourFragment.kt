@@ -4,15 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.muzo.musicapp.core.data.local.room.MusicLocalData
+import com.muzo.musicapp.core.data.local.room.modelclass.MusicLocalData
 import com.muzo.musicapp.databinding.FragmentSectionFourBinding
 import com.muzo.musicapp.feature.adapter.ForthPageAdapter
 import com.muzo.musicapp.feature.fragment.BaseFragment
-import com.muzo.musicapp.feature.fragment.detailFragment.DetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
