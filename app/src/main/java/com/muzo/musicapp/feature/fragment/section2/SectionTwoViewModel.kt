@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class SectionTwoViewModel @Inject constructor(
     private val getHomeMusicUseCase: GetHomeMusicUseCase,
     private val localMusicDataSource: LocalMusicDataSource,
 ) : ViewModel() {
@@ -48,9 +48,9 @@ class HomeViewModel @Inject constructor(
         }
     }
     suspend fun saveLastClicked(item:List<LastClikedMusic>){
-
         localMusicDataSource.insertLastClickedMusic(item)
     }
+
 
     fun convertToMusicLocalDataList(music: Music): List<LastClikedMusic> {
         return listOf(
@@ -62,13 +62,11 @@ class HomeViewModel @Inject constructor(
                 trackPrice = music.trackPrice.toString(),
                 artworkUrl100 = music.artworkUrl100,
                 previewUrl = music.previewUrl,
-                collectionName = music.collectionName
+                collectionName = music.collectionName,
 
             )
         )
     }
-
-
 
 }
 

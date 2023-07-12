@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.muzo.musicapp.core.data.local.room.modelclass.FavLocalData
 import com.muzo.musicapp.core.data.local.room.modelclass.MusicLocalData
 import com.muzo.musicapp.databinding.FragmentSectionFourBinding
 import com.muzo.musicapp.feature.adapter.ForthPageAdapter
@@ -20,7 +21,7 @@ class SectionFourFragment : BaseFragment() {
     private lateinit var binding: FragmentSectionFourBinding
     private lateinit var adapter: ForthPageAdapter
     private val viewModel: SectionFourViewModel by viewModels()
-    private lateinit var list: List<MusicLocalData>
+    private lateinit var list: List<FavLocalData>
 
 
     override fun onCreateView(
@@ -40,7 +41,6 @@ class SectionFourFragment : BaseFragment() {
     private fun setAdapter() {
         adapter = ForthPageAdapter(list){item ->
             lifecycleScope.launch {
-                    viewModel.deleteRoom(item.uid)
             }
         }
         binding.apply {
@@ -63,11 +63,11 @@ class SectionFourFragment : BaseFragment() {
                             rv3.visibility = View.GONE
                         }
                     }
-                    uiState.musicListLocal != null -> {
+                    uiState.favMusicList != null -> {
                         binding.apply {
                             progressBar.visibility = View.GONE
                             rv3.visibility = View.VISIBLE
-                            list = uiState.musicListLocal
+                            list = uiState.favMusicList
                             setAdapter()
                         }
                     }

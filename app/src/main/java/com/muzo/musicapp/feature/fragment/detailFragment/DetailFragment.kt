@@ -1,6 +1,5 @@
 package com.muzo.musicapp.feature.fragment.detailFragment
 
-import android.annotation.SuppressLint
 import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -9,23 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.os.HandlerCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.muzo.musicapp.R
+import com.muzo.musicapp.core.data.local.room.modelclass.FavLocalData
 import com.muzo.musicapp.databinding.FragmentDetailBinding
 import com.muzo.musicapp.feature.fragment.BaseFragment
-import com.muzo.musicapp.feature.fragment.section2.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-
 
 
 @AndroidEntryPoint
 class DetailFragment : BaseFragment() {
     private lateinit var binding: FragmentDetailBinding
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: DetailViewModel by viewModels()
     private var mediaPlayer: MediaPlayer? = null
 
 
@@ -42,11 +38,14 @@ class DetailFragment : BaseFragment() {
     }
 
     private fun loadData() {
+
         lifecycleScope.launch {
+
             viewModel._uiState.collect { uiState ->
 
                 when {
                     uiState.loading -> {
+
                         binding.apply {
                             progressBar.visibility = View.VISIBLE
                             trackName.visibility = View.GONE
@@ -54,11 +53,14 @@ class DetailFragment : BaseFragment() {
                             collectionName.visibility = View.GONE
                             trackPrice.visibility = View.GONE
                             releaseDate.visibility = View.GONE
+                            card.visibility = View.GONE
+                            constant1.visibility = View.GONE
+                            constant2.visibility = View.GONE
+                            constant3.visibility = View.GONE
                         }
                     }
 
-                    uiState.musicList != null -> {
-
+                    else -> {
                         binding.apply {
                             getData()
                             progressBar.visibility = View.GONE
@@ -67,10 +69,16 @@ class DetailFragment : BaseFragment() {
                             collectionName.visibility = View.VISIBLE
                             trackPrice.visibility = View.VISIBLE
                             releaseDate.visibility = View.VISIBLE
+                            card.visibility = View.VISIBLE
+                            constant1.visibility = View.VISIBLE
+                            constant2.visibility = View.VISIBLE
+                            constant3.visibility = View.VISIBLE
                         }
+
                     }
                 }
             }
+
         }
 
     }
@@ -88,6 +96,7 @@ class DetailFragment : BaseFragment() {
 //            crossfade(true)
 //            crossfade(1000)
 //        }
+
         binding.trackName.text = trackName
         binding.signerName.text = signerName
         binding.collectionName.text = collectionName
@@ -142,7 +151,6 @@ class DetailFragment : BaseFragment() {
     }
 
 
-
     private fun clickListener() {
         binding.play.setOnClickListener { playMusic() }
         binding.pause.setOnClickListener { pauseMusic() }
@@ -164,10 +172,11 @@ class DetailFragment : BaseFragment() {
             }
         }, 1000)
     }
+
     override fun onPause() {
         super.onPause()
         pauseMusic()
-        binding.seekBar.setProgress(0,true)
+        binding.seekBar.setProgress(0, true)
     }
 
     private fun heartClicked() {
@@ -180,30 +189,78 @@ class DetailFragment : BaseFragment() {
             val currentDrawableName = binding.heartIv.tag as? String
 
             if (currentDrawableName == emptyHeartDrawableName) {
-                binding.heartIv.setImageResource(resources.getIdentifier(filledHeartDrawableName, "drawable", requireContext().packageName))
+                binding.heartIv.setImageResource(
+                    resources.getIdentifier(
+                        filledHeartDrawableName, "drawable", requireContext().packageName
+                    )
+                )
                 binding.heartIv.setTag(filledHeartDrawableName)
 
                 toastMessage("This song added fav")
+                addFav()
 
 
             } else {
                 // Boş kalp görselini yükleyin
-                binding.heartIv.setImageResource(resources.getIdentifier(emptyHeartDrawableName, "drawable", requireContext().packageName))
+                binding.heartIv.setImageResource(
+                    resources.getIdentifier(
+                        emptyHeartDrawableName, "drawable", requireContext().packageName
+                    )
+                )
                 binding.heartIv.setTag(emptyHeartDrawableName)
-
+                distractFav()
                 toastMessage("This song distract fav")
             }
         }
     }
-    private fun toastMessage(message:String){
 
-        Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+    private fun toastMessage(message: String) {
+
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 
     }
 
+    private fun addFav() {
+
+        val listFav = arrayListOf<FavLocalData>()
+        val artworkUrl100 = arguments?.getString("artworkUrl100")
+        val trackUrl = arguments?.getString("trackUrl")
+        val trackName = arguments?.getString("trackName")
+        val signerName = arguments?.getString("artistName")
+        val collectionName = arguments?.getString("collectionName")
+        val trackPrice = arguments?.getString("trackPrice")
+        val releaseDate = arguments?.getString("releaseDate")
+
+
+        val favLocalData = FavLocalData(
+
+            artistName = signerName!!,
+            trackName = trackName!!,
+            releaseDate = releaseDate!!,
+            trackPrice = trackPrice!!,
+            artworkUrl100 = artworkUrl100!!,
+            collectionName = collectionName!!,
+            previewUrl = trackUrl!!,
+            uid = 0,
+        )
+
+        listFav.add(favLocalData)
+        lifecycleScope.launch {
+            viewModel.saveFavList(listFav as List<FavLocalData>)
+        }
 
 
 
+    }
+    private fun distractFav(){
+
+        val trackName = arguments?.getString("trackName")
+
+
+        lifecycleScope.launch {
+            viewModel.deleteFavList(trackName!!)
+        }
+    }
 
 
 }

@@ -1,5 +1,6 @@
 package com.muzo.musicapp.core.data.local.source
 
+import com.muzo.musicapp.core.data.local.room.modelclass.FavLocalData
 import com.muzo.musicapp.core.data.local.room.modelclass.LastClikedMusic
 import com.muzo.musicapp.core.data.local.room.modelclass.MusicLocalData
 import com.muzo.musicapp.core.data.model.Music
@@ -16,6 +17,14 @@ interface LocalMusicDataSource {
     suspend fun getLastClickedMusic():Flow<List<LastClikedMusic>>
 
     suspend fun insertLastClickedMusic(lastClickedMusic:List<LastClikedMusic>)
+
+    suspend fun getFavMusic():Flow<List<FavLocalData>>
+
+    suspend fun insertFavMusic(favMusic:List<FavLocalData>)
+
+    suspend fun deleteFavMusicByTrackName(trackName:String)
+
+
 
 
 }

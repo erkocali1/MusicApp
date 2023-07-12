@@ -96,6 +96,7 @@ class SectionThreeFragment : BaseFragment() {
             putString("releaseDate", item.releaseDate)
             putString("trackPrice", item.trackPrice.toString())
             putString("trackUrl", item.previewUrl)
+
         }
 
         findNavController().navigate(R.id.action_sectionThreeFragment_to_detailFragment, bundle)

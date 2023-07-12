@@ -21,7 +21,7 @@ class SectionTwoFragment : BaseFragment() {
     private lateinit var binding: FragmentSectionTwoBinding
     private lateinit var adapter: SecondPageAdapter
     private lateinit var list: List<Music>
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: SectionTwoViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -47,9 +47,6 @@ class SectionTwoFragment : BaseFragment() {
                 viewModel.saveLastClicked(lastClickedList)
 
             }
-
-
-
         }
         binding.rv2.apply {
             layoutManager = GridLayoutManager(requireContext(), 2) // spanCount değerini belirleyin
@@ -98,6 +95,7 @@ class SectionTwoFragment : BaseFragment() {
             putString("releaseDate", item.releaseDate)
             putString("trackPrice", item.trackPrice.toString())
             putString("trackUrl", item.previewUrl)
+            putInt("artistId",item.artistId)
         }
 
         findNavController().navigate(R.id.action_sectionTwoFragment_to_detailFragment, bundle)

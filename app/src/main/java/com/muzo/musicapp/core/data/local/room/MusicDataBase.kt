@@ -3,12 +3,13 @@ package com.muzo.musicapp.core.data.local.room
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.muzo.musicapp.core.data.local.MusicDao.MusicDao
+import com.muzo.musicapp.core.data.local.room.modelclass.FavLocalData
 import com.muzo.musicapp.core.data.local.room.modelclass.MusicLocalData
 import com.muzo.musicapp.core.data.local.room.modelclass.LastClikedMusic
 
 
 @Database(
-    entities = [MusicLocalData::class,LastClikedMusic::class],
+    entities = [MusicLocalData::class,LastClikedMusic::class,FavLocalData::class],
     version = 1,
     exportSchema = false
 )

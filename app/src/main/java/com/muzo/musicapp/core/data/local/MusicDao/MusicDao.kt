@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.muzo.musicapp.core.data.local.room.modelclass.FavLocalData
 import com.muzo.musicapp.core.data.local.room.modelclass.LastClikedMusic
 import com.muzo.musicapp.core.data.local.room.modelclass.MusicLocalData
 import kotlinx.coroutines.flow.Flow
@@ -28,6 +29,20 @@ interface MusicDao {
 
     @Query("SELECT * FROM last_clicked_music")
     fun getAllLastClickedMusic(): Flow<List<LastClikedMusic>>
+
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertFavMusic(favMusic:List<FavLocalData>)
+
+
+    @Query("SELECT * FROM fav_music")
+    fun getAllFavMusic(): Flow<List<FavLocalData>>
+
+
+    @Query("DELETE FROM fav_music WHERE trackName = :trackName")
+    suspend fun deleteFavMusicByTrackName(trackName: String)
+
+
 
 
 }
