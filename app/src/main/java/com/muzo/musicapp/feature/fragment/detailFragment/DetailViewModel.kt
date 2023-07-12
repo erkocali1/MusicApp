@@ -5,9 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.muzo.musicapp.core.common.Resource
 import com.muzo.musicapp.core.common.asReSource
 import com.muzo.musicapp.core.data.local.room.modelclass.FavLocalData
-import com.muzo.musicapp.core.data.local.room.modelclass.LastClikedMusic
 import com.muzo.musicapp.core.data.local.source.LocalMusicDataSource
-import com.muzo.musicapp.core.data.model.Music
 import com.muzo.musicapp.domain.usecase.GetFavFromRoomUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,7 +26,7 @@ class DetailViewModel @Inject constructor(
         getMusic()
     }
 
-  private  fun getMusic() {
+    private fun getMusic() {
         viewModelScope.launch {
             getFavFromRoomUseCase().asReSource().onEach { result ->
                 when (result) {
@@ -42,23 +40,26 @@ class DetailViewModel @Inject constructor(
 
                     is Resource.Success -> {
                         _uiState.value =
-                            _uiState.value.copy(loading = false)
+                            _uiState.value.copy(loading = false, favLocalData = result.data)
+
                     }
                 }
             }.launchIn(this)
         }
     }
 
-    suspend fun saveFavList(item:List<FavLocalData>){
+    suspend fun saveFavList(item: List<FavLocalData>) {
         localMusicDataSource.insertFavMusic(item)
     }
 
-    suspend  fun deleteFavList(trackName:String){
+    suspend fun deleteFavList(trackName: String) {
         localMusicDataSource.deleteFavMusicByTrackName(trackName)
     }
+
 
 }
 
 data class HomeUiState(
     val loading: Boolean = false,
-    )
+    val favLocalData: List<FavLocalData>? = null
+)

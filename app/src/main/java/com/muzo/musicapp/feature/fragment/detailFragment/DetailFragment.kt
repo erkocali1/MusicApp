@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.core.os.HandlerCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.muzo.musicapp.R
 import com.muzo.musicapp.core.data.local.room.modelclass.FavLocalData
 import com.muzo.musicapp.databinding.FragmentDetailBinding
 import com.muzo.musicapp.feature.fragment.BaseFragment
@@ -24,6 +23,8 @@ class DetailFragment : BaseFragment() {
     private lateinit var binding: FragmentDetailBinding
     private val viewModel: DetailViewModel by viewModels()
     private var mediaPlayer: MediaPlayer? = null
+    private var isFav: Boolean = false
+    private var list: List<FavLocalData>? = null
 
 
 
@@ -32,11 +33,9 @@ class DetailFragment : BaseFragment() {
     ): View? {
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
 
-
         heartClicked()
         loadData()
         clickListener()
-        isFavCheck()
         return binding.root
     }
 
@@ -62,8 +61,12 @@ class DetailFragment : BaseFragment() {
                             constant3.visibility = View.GONE
                         }
                     }
+                    uiState.favLocalData !=null->{
 
-                    else -> {
+                        list=uiState.favLocalData
+                        isFavCheck()
+
+
                         binding.apply {
                             getData()
                             progressBar.visibility = View.GONE
@@ -77,6 +80,10 @@ class DetailFragment : BaseFragment() {
                             constant2.visibility = View.VISIBLE
                             constant3.visibility = View.VISIBLE
                         }
+                    }
+
+                    else -> {
+
 
                     }
                 }
@@ -94,11 +101,6 @@ class DetailFragment : BaseFragment() {
         val trackPrice = arguments?.getString("trackPrice")
         val releaseDate = arguments?.getString("releaseDate")
 
-
-//        binding.IvSigner.load(Ivurl) {
-//            crossfade(true)
-//            crossfade(1000)
-//        }
 
         binding.trackName.text = trackName
         binding.signerName.text = signerName
@@ -253,9 +255,9 @@ class DetailFragment : BaseFragment() {
         }
 
 
-
     }
-    private fun distractFav(){
+
+    private fun distractFav() {
 
         val trackName = arguments?.getString("trackName")
 
@@ -266,15 +268,29 @@ class DetailFragment : BaseFragment() {
     }
 
     private fun isFavCheck() {
-        val isFav = arguments?.getBoolean("isFav")
+        val trackName = arguments?.getString("trackName")
 
-        if (isFav == true) {
-            binding.heartIv.setImageResource(R.drawable.ic_full_fav)
+        // Check if the trackName exists in the list of favLocalData
+        val isFav = list!!.any { it.trackName == trackName }
+
+        // Update the heart icon based on the isFav status
+        if (isFav) {
+            binding.heartIv.setImageResource(
+                resources.getIdentifier(
+                    "ic_full_fav", "drawable", requireContext().packageName
+                )
+            )
             binding.heartIv.tag = "ic_full_fav"
         } else {
-            binding.heartIv.setImageResource(R.drawable.ic_fav)
+            binding.heartIv.setImageResource(
+                resources.getIdentifier(
+                    "ic_fav", "drawable", requireContext().packageName
+                )
+            )
             binding.heartIv.tag = "ic_fav"
         }
     }
+
+
 
 }

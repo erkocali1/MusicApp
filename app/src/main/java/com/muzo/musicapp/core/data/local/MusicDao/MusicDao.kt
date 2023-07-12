@@ -42,7 +42,7 @@ interface MusicDao {
     @Query("DELETE FROM fav_music WHERE trackName = :trackName")
     suspend fun deleteFavMusicByTrackName(trackName: String)
 
-    @Query("DELETE FROM fav_music")
+    @Query("DELETE FROM last_clicked_music")
     suspend fun deleteAllFavMusic()
 
 
