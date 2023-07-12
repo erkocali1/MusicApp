@@ -7,7 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".feature.activities.LoginActivity">
 
-    <include layout="@layout/my_toolbar"/>
+    <include
+        android:id="@+id/includedToolbar"
+        layout="@layout/my_toolbar"/>
 
 
     <ImageView

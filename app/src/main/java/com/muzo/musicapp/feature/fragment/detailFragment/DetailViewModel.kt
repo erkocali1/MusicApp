@@ -61,5 +61,4 @@ class DetailViewModel @Inject constructor(
 
 data class HomeUiState(
     val loading: Boolean = false,
-
     )

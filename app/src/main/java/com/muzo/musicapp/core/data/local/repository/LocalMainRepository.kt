@@ -25,6 +25,8 @@ interface LocalMainRepository  {
 
       suspend fun deleteFavMusicByTrackName(trackName: String)
 
+      suspend fun deleteAllFav()
+
 
 
 

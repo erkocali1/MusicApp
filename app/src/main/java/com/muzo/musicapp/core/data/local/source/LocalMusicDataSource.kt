@@ -24,6 +24,8 @@ interface LocalMusicDataSource {
 
     suspend fun deleteFavMusicByTrackName(trackName:String)
 
+    suspend fun deleteAllFav()
+
 
 
 

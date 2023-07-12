@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.muzo.musicapp.R
 import com.muzo.musicapp.core.data.local.room.modelclass.FavLocalData
 import com.muzo.musicapp.core.data.local.room.modelclass.MusicLocalData
+import com.muzo.musicapp.core.data.model.Music
 import com.muzo.musicapp.databinding.FragmentSectionFourBinding
 import com.muzo.musicapp.feature.adapter.ForthPageAdapter
 import com.muzo.musicapp.feature.fragment.BaseFragment
@@ -39,18 +42,25 @@ class SectionFourFragment : BaseFragment() {
 
 
     private fun setAdapter() {
-        adapter = ForthPageAdapter(list){item ->
-            lifecycleScope.launch {
+        adapter = ForthPageAdapter(list,
+            onMusicClickListener = { item ->
+                lifecycleScope.launch {
+                    navigateToDetailFragment(item)
+                }
+            },
+            onDeleteClickListener = { item ->
+                lifecycleScope.launch {
+                    viewModel.deleteFromRoom(item.uid)
+                }
             }
-        }
+        )
         binding.apply {
             rv3.adapter = adapter
             rv3.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-
         }
-
     }
+
 
     private fun observeData() {
 
@@ -77,5 +87,21 @@ class SectionFourFragment : BaseFragment() {
                 }
             }
         }
+    }
+    private fun navigateToDetailFragment(item: FavLocalData) {
+
+        val bundle = Bundle().apply {
+            putString("artworkUrl100", item.artworkUrl100)
+            putString("trackName", item.trackName)
+            putString("artistName", item.artistName)
+            putString("collectionName", item.collectionName)
+            putString("releaseDate", item.releaseDate)
+            putString("trackPrice", item.trackPrice)
+            putString("trackUrl", item.previewUrl)
+            putBoolean("isFav",true)
+        }
+
+        findNavController().navigate(R.id.action_sectionFourFragment_to_detailFragment, bundle)
+
     }
 }

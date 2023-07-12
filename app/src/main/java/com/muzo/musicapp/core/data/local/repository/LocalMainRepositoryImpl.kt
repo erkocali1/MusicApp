@@ -42,5 +42,9 @@ class LocalMainRepositoryImpl @Inject constructor(
         return musicDataSource.deleteFavMusicByTrackName(trackName)
     }
 
+    override suspend fun deleteAllFav() {
+        return musicDataSource.deleteAllFav()
+    }
+
 
 }

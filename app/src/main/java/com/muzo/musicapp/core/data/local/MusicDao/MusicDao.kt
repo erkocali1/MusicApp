@@ -19,7 +19,7 @@ interface MusicDao {
     @Query("SELECT * FROM musicLocalData")
     fun getAllMusic(): Flow<List<MusicLocalData>>
 
-    @Query("DELETE FROM musicLocalData WHERE uid = :musicId")
+    @Query("DELETE FROM fav_music WHERE uid = :musicId")
     suspend fun deleteMusicByUid(musicId: Int)
 
 
@@ -42,6 +42,8 @@ interface MusicDao {
     @Query("DELETE FROM fav_music WHERE trackName = :trackName")
     suspend fun deleteFavMusicByTrackName(trackName: String)
 
+    @Query("DELETE FROM fav_music")
+    suspend fun deleteAllFavMusic()
 
 
 

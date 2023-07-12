@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.muzo.musicapp.core.common.Resource
 import com.muzo.musicapp.core.common.asReSource
 import com.muzo.musicapp.core.data.local.room.modelclass.FavLocalData
+import com.muzo.musicapp.core.data.local.source.LocalMusicDataSource
 import com.muzo.musicapp.domain.usecase.GetFavFromRoomUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,6 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SectionFourViewModel @Inject constructor(
     private val getFavFromRoomUseCase: GetFavFromRoomUseCase,
+    private val localMusicDataSource: LocalMusicDataSource
 ) : ViewModel() {
 
     val _uiState: MutableStateFlow<SectionsUiState> = MutableStateFlow(SectionsUiState())
@@ -52,6 +54,10 @@ class SectionFourViewModel @Inject constructor(
 
         }
 
+    }
+
+    suspend fun deleteFromRoom(musicId: Int) {
+        localMusicDataSource.deleteMusicByUid(musicId)
     }
 
 

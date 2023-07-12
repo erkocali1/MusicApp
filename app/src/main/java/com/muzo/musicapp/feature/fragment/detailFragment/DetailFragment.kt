@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.os.HandlerCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.muzo.musicapp.R
 import com.muzo.musicapp.core.data.local.room.modelclass.FavLocalData
 import com.muzo.musicapp.databinding.FragmentDetailBinding
 import com.muzo.musicapp.feature.fragment.BaseFragment
@@ -25,6 +26,7 @@ class DetailFragment : BaseFragment() {
     private var mediaPlayer: MediaPlayer? = null
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -34,6 +36,7 @@ class DetailFragment : BaseFragment() {
         heartClicked()
         loadData()
         clickListener()
+        isFavCheck()
         return binding.root
     }
 
@@ -262,5 +265,16 @@ class DetailFragment : BaseFragment() {
         }
     }
 
+    private fun isFavCheck() {
+        val isFav = arguments?.getBoolean("isFav")
+
+        if (isFav == true) {
+            binding.heartIv.setImageResource(R.drawable.ic_full_fav)
+            binding.heartIv.tag = "ic_full_fav"
+        } else {
+            binding.heartIv.setImageResource(R.drawable.ic_fav)
+            binding.heartIv.tag = "ic_fav"
+        }
+    }
 
 }

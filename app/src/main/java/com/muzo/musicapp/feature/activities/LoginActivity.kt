@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
         }
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        loginName()
         enter()
     }
 
@@ -38,7 +38,12 @@ class LoginActivity : AppCompatActivity() {
                 val sp = sharedPreferences.edit()
                 sp.putString("userName", userName)
                 sp.apply()
-                startActivity(Intent(this, MainActivity::class.java))
+
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+
+
             } else
                 alertDialog()
         }
@@ -64,5 +69,8 @@ class LoginActivity : AppCompatActivity() {
         if (authenticationInfo!!.isNotEmpty()) {
             startActivity(Intent(this, MainActivity::class.java))
         }
+    }
+    private fun loginName(){
+        binding.includedToolbar.UserName.text="Are U Ready For Fun "
     }
 }

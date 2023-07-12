@@ -96,6 +96,7 @@ class SectionTwoFragment : BaseFragment() {
             putString("trackPrice", item.trackPrice.toString())
             putString("trackUrl", item.previewUrl)
             putInt("artistId",item.artistId)
+
         }
 
         findNavController().navigate(R.id.action_sectionTwoFragment_to_detailFragment, bundle)

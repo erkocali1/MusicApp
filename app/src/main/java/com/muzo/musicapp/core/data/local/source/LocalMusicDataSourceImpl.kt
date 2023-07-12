@@ -43,5 +43,9 @@ class LocalMusicDataSourceImpl @Inject constructor(
         return musicDao.deleteFavMusicByTrackName(trackName)
     }
 
+    override suspend fun deleteAllFav() {
+        return musicDao.deleteAllFavMusic()
+    }
+
 
 }

@@ -46,6 +46,13 @@ class SectionOneFragment : BaseFragment() {
 
             navigateToDetailFragment(item)
 
+            lifecycleScope.launch {
+
+                val lastClickedList=viewModel.convertToMusicLocalDataList(item)
+                viewModel.saveLastClicked(lastClickedList)
+
+            }
+
         }
         binding.rv.apply {
             layoutManager = LinearLayoutManager(requireContext())
