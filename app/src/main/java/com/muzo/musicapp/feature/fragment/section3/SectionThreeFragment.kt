@@ -64,15 +64,21 @@ class SectionThreeFragment : BaseFragment() {
                         binding.progressBar.visibility = View.VISIBLE
                         binding.rv2.visibility = View.GONE
                         binding.resultNumber.visibility = View.GONE
+                        binding.noValue.visibility=View.GONE
                     }
 
                     uiState.musicListLocal != null -> {
                         binding.progressBar.visibility = View.GONE
                         binding.rv2.visibility = View.VISIBLE
                         binding.resultNumber.visibility = View.VISIBLE
+                        binding.noValue.visibility=View.GONE
 
                         list = uiState.musicListLocal
-                        binding.resultNumber.text = "Last listened  ${list.size} results found "
+                        binding.resultNumber.text = "Last observed  ${list.size} music found "
+                        val size=list.size
+                        if (size==0){
+                            binding.noValue.visibility=View.VISIBLE
+                        }
                         setupAdapter()
 
                     }

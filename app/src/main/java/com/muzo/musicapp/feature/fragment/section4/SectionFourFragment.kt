@@ -71,13 +71,20 @@ class SectionFourFragment : BaseFragment() {
                         binding.apply {
                             progressBar.visibility = View.GONE
                             rv3.visibility = View.GONE
+                            binding.noValue.visibility=View.GONE
                         }
                     }
                     uiState.favMusicList != null -> {
                         binding.apply {
                             progressBar.visibility = View.GONE
                             rv3.visibility = View.VISIBLE
+                            binding.noValue.visibility=View.GONE
                             list = uiState.favMusicList
+                            binding.resultNumber.text = "Your ${list.size} piece favorites music found "
+                            val size=list.size
+                            if (size==0){
+                                binding.noValue.visibility=View.VISIBLE
+                            }
                             setAdapter()
                         }
                     }

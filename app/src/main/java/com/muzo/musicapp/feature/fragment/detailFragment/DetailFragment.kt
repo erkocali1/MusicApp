@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.core.os.HandlerCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.muzo.musicapp.R
 import com.muzo.musicapp.core.data.local.room.modelclass.FavLocalData
 import com.muzo.musicapp.databinding.FragmentDetailBinding
 import com.muzo.musicapp.feature.fragment.BaseFragment
@@ -275,21 +276,14 @@ class DetailFragment : BaseFragment() {
 
         // Update the heart icon based on the isFav status
         if (isFav) {
-            binding.heartIv.setImageResource(
-                resources.getIdentifier(
-                    "ic_full_fav", "drawable", requireContext().packageName
-                )
-            )
+            binding.heartIv.setImageResource(R.drawable.ic_full_fav)
             binding.heartIv.tag = "ic_full_fav"
         } else {
-            binding.heartIv.setImageResource(
-                resources.getIdentifier(
-                    "ic_fav", "drawable", requireContext().packageName
-                )
-            )
+            binding.heartIv.setImageResource(R.drawable.ic_fav)
             binding.heartIv.tag = "ic_fav"
         }
     }
+
 
 
 
