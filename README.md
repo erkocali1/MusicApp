@@ -29,3 +29,8 @@
   <li>Coil</li>
 </ul>
 </body>
+ <h2>📱 Sayfalar</h2>
+   </p>
+ <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/3.png" alt="Resim">
+   </p>
+  <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/4.png" alt="Resim">
