@@ -44,7 +44,7 @@ Kotlin'de pagination uygularken, veri kaynağından gelen verileri sayfa sayfa a
    <h2>📝Data-Domain-UI Layer</h2>
    
    Data, Domain ve UI katmanları, yazılım mimarisi konseptlerinden biri olan MVVM (Model-View-ViewModel) ve Clean Architecture prensipleriyle ilişkilidir. Her bir katman, belirli bir sorumluluk ve iş mantığı için tasarlanmıştır.MVVM (Model-View-ViewModel) mimarisi, UI Layer (Activity, Fragment vb.) ve ViewModel arasında bir bağlantı noktası sağlar. ViewModel, kullanıcının arayüz ile etkileşimini yönetir, gerekli verileri Domain Layer'dan alır ve UI Layer'a sunar. ViewModel, UI durumunu takip eder ve verilerin doğru bir şekilde güncellenmesini sağlar.Clean Architecture prensipleri, bu katmanların bağımsız olmasını ve birbirlerine bağımlılık oluşturmamalarını sağlar. Bu sayede, her katmanı ayrı ayrı geliştirmek, test etmek ve değiştirmek kolaylaşır.Benim bu projede uyguladıgım bu pattern başta uygulamada bir takım bussines logic leri yönetmenizi gerektitiyor ancak daha sonrasında yeni bir şey ekleme ve test edilebilirlik açısından işimi çok kolaylaştırıyordu.Kısıca kullandığım yapılarla bunları ilişkilendiricek olursam:
-   <h2>Data Katmanı:</h2>
+   <h3>Data Katmanı:</h3>
 
 <ul>
   <li><strong>Dagger Hilt:</strong> Bağımlılıkları yönetmek ve enjeksiyon yapısı sağlamak için data katmanında kullanılabilir.</li>
@@ -55,13 +55,13 @@ Kotlin'de pagination uygularken, veri kaynağından gelen verileri sayfa sayfa a
   <li><strong>Shared Preferences:</strong> Küçük verileri saklamak ve yönetmek için data katmanında kullanılabilir.</li>
 </ul>
 
-<h2>Domain Katmanı:</h2>
+<h3>Domain Katmanı:</h3>
 
 <ul>
   <li><strong>Pagination:</strong> Veri akışını yönetmek, sayfalama işlemlerini gerçekleştirmek ve verilerin etkili bir şekilde yönetilmesini sağlamak için domain katmanında kullanılabilir.</li>
 </ul>
 
-<h2>UI Katmanı:</h2>
+<h3>UI Katmanı:</h3>
 
 <ul>
   <li><strong>Navigation Component:</strong> Uygulama içinde gezinme ve sayfa yönlendirmeleri için UI katmanında kullanılabilir.</li>
@@ -70,6 +70,13 @@ Kotlin'de pagination uygularken, veri kaynağından gelen verileri sayfa sayfa a
   <li><strong>LifeCycle:</strong> Uygulamanın yaşam döngüsünü izlemek ve uygun aksiyonlar almak için UI katmanında kullanılabilir.</li>
   <li><strong>Coil:</strong> Resim yüklemeyi ve görüntüleri işlemeyi kolaylaştırmak için UI katmanında kullanılabilir.</li>
 </ul>
+ <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/ss/celartsss.png" alt="Resim">
+ 
+ Kaynak:https://developer.android.com/topic/architecture
+
+ 
+
+
 
    
    
