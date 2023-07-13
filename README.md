@@ -6,7 +6,7 @@
 
  </head>
 <body>
-  <h1>🖊️Uygulamya Ön Bakış</h1>
+  <h1>🖊️Uygulamaya Ön Bakış</h1>
   <p>
     Bu Kotlin uygulaması, iTunes API'den alınan verilerle oluşturulmuştur. Bu Kotlin uygulamasında, veri işleme, iş mantığı ve kullanıcı arayüzü ile ilgili sorumlulukları ayrı katmanlara bölmek için Data, Domain ve UI katmanlarını kullanmayı tercih ettim. Verilerin API'den alınması ve işlenmesi için çeşitli framework'ler ve kütüphaneler kullandım. Ayrıca, kullanıcı deneyimini iyileştirmek için sayfalama (pagination) yöntemi de uygulanmıştır. Bu yaklaşım, uygulamanın verileri verimli bir şekilde yönetmesini ve büyük veri kümeleriyle başa çıkmasına yardımcı olması amaçlanmıştır.
   </p>
