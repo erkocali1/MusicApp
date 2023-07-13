@@ -31,9 +31,9 @@
 </body>
  <h2>📱 Sayfalar</h2>
    </p>
- <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/3.png" alt="Resim">
+ <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/ss/glow%20(1).png" alt="Resim">
    </p>
-  <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/4.png" alt="Resim">
+  <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/ss/glow%20(2).png" alt="Resim">
 
   <h2>📝Pagination Nedir </h2>
   Kotlin'de pagination, genellikle veri tabanlarından veya API çağrılarından dönen büyük miktardaki verileri daha küçük parçalara bölmek için kullanılır. Böylece kullanıcılar sayfa sayfa verilere erişebilir ve büyük veri kümesinin tamamını yüklemek zorunda kalmazlar.
