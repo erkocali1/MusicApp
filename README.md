@@ -34,3 +34,12 @@
  <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/3.png" alt="Resim">
    </p>
   <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/4.png" alt="Resim">
+
+  <h2>📝Pagination Nedir </h2>
+  Kotlin'de pagination, genellikle veri tabanlarından veya API çağrılarından dönen büyük miktardaki verileri daha küçük parçalara bölmek için kullanılır. Böylece kullanıcılar sayfa sayfa verilere erişebilir ve büyük veri kümesinin tamamını yüklemek zorunda kalmazlar.
+Kotlin'de pagination uygularken, veri kaynağından gelen verileri sayfa sayfa almak ve kullanıcıya göstermek için özel bir mantık kullanmanız gerekebilir. Genellikle sayfalama numarasına ve sayfa boyutuna göre bir sorgu veya filtreleme işlemi yaparak istenen veri parçasını alırsınız. Yaptığım bu uygulamamda da İtunes API kullanarak gelen verileri sayfa sayfa alarak büyük veri kümelerini yönetmeye çalıştım .Kaynak kodlarımı inceleyerek nasıl Pagination yapıldıgı konusu hakkında fikir sahibi olabilirsiniz ancak bir görsel ile genel mantığı anlatabilirim.
+
+ <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/ss/paginationss.png" alt="Resim">
+
+
+  
