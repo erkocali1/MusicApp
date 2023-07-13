@@ -70,11 +70,17 @@ Kotlin'de pagination uygularken, veri kaynağından gelen verileri sayfa sayfa a
   <li><strong>LifeCycle:</strong> Uygulamanın yaşam döngüsünü izlemek ve uygun aksiyonlar almak için UI katmanında kullanılabilir.</li>
   <li><strong>Coil:</strong> Resim yüklemeyi ve görüntüleri işlemeyi kolaylaştırmak için UI katmanında kullanılabilir.</li>
 </ul>
- <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/ss/celartsss.png" alt="Resim">
+<img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/ss/celartsss.png" alt="Resim" style="width: 800px; height: 300px;">
+
  
  Kaynak:https://developer.android.com/topic/architecture
 
  
+
+https://github.com/erkocali1/MusicApp/assets/116030125/9f73b734-d968-45c5-b2f4-227ca4ba4736
+
+
+
 
 
 
