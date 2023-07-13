@@ -70,7 +70,7 @@ Kotlin'de pagination uygularken, veri kaynağından gelen verileri sayfa sayfa a
   <li><strong>LifeCycle:</strong> Uygulamanın yaşam döngüsünü izlemek ve uygun aksiyonlar almak için UI katmanında kullanılabilir.</li>
   <li><strong>Coil:</strong> Resim yüklemeyi ve görüntüleri işlemeyi kolaylaştırmak için UI katmanında kullanılabilir.</li>
 </ul>
-<img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/ss/celartsss.png" alt="Resim" style="width: 800px; height: 300px;">
+<img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/ss/celartsss.png" alt="Resim" style="width: 1100px; height:350px;">
 
  
  Kaynak:https://developer.android.com/topic/architecture
@@ -78,6 +78,60 @@ Kotlin'de pagination uygularken, veri kaynağından gelen verileri sayfa sayfa a
  
 
 https://github.com/erkocali1/MusicApp/assets/116030125/9f73b734-d968-45c5-b2f4-227ca4ba4736
+
+
+## 📝: Dependency
+```
+dependencies {
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    // http client
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    //interceptor
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+    // Navigation Components
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+
+    // Coroutine Lifecycle Scopes
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+
+    //BottomBar
+    implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
+
+    //circle
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //pagination
+    def paging_version = "3.1.1"
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+     //Coil
+    implementation 'io.coil-kt:coil:1.3.2'
+
+    //room
+    implementation 'androidx.room:room-runtime:2.5.2'
+    kapt 'androidx.room:room-compiler:2.5.2'
+    annotationProcessor "androidx.room:room-compiler:2.5.2"
+    implementation "androidx.room:room-ktx:2.5.2"
+
+    //splashScreen
+    implementation "androidx.core:core-splashscreen:1.0.1"
+
+}
+```
 
 
 
