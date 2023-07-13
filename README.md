@@ -38,8 +38,14 @@
   <h2>📝Pagination Nedir </h2>
   Kotlin'de pagination, genellikle veri tabanlarından veya API çağrılarından dönen büyük miktardaki verileri daha küçük parçalara bölmek için kullanılır. Böylece kullanıcılar sayfa sayfa verilere erişebilir ve büyük veri kümesinin tamamını yüklemek zorunda kalmazlar.
 Kotlin'de pagination uygularken, veri kaynağından gelen verileri sayfa sayfa almak ve kullanıcıya göstermek için özel bir mantık kullanmanız gerekebilir. Genellikle sayfalama numarasına ve sayfa boyutuna göre bir sorgu veya filtreleme işlemi yaparak istenen veri parçasını alırsınız. Yaptığım bu uygulamamda da İtunes API kullanarak gelen verileri sayfa sayfa alarak büyük veri kümelerini yönetmeye çalıştım .Kaynak kodlarımı inceleyerek nasıl Pagination yapıldıgı konusu hakkında fikir sahibi olabilirsiniz ancak bir görsel ile genel mantığı anlatabilirim.
-
  <img src="https://github.com/erkocali1/MusicApp/blob/master/app/src/main/res/drawable/ss/paginationss.png" alt="Resim">
+ Kaynak:https://developer.android.com/topic/libraries/architecture/paging/v3-overview
+
+   <h2>📝Data-Domain-UI Layer</h2>
+   
+   Data, Domain ve UI katmanları, yazılım mimarisi konseptlerinden biri olan MVVM (Model-View-ViewModel) ve Clean Architecture prensipleriyle ilişkilendirilebilir. Her bir katman, belirli bir sorumluluk ve iş mantığı için tasarlanmıştır.MVVM (Model-View-ViewModel) mimarisi, UI Layer (Activity, Fragment vb.) ve ViewModel arasında bir bağlantı noktası sağlar. ViewModel, kullanıcının arayüz ile etkileşimini yönetir, gerekli verileri Domain Layer'dan alır ve UI Layer'a sunar. ViewModel, UI durumunu takip eder ve verilerin doğru bir şekilde güncellenmesini sağlar.Clean Architecture prensipleri, bu katmanların bağımsız olmasını ve birbirlerine bağımlılık oluşturmamalarını sağlar. Bu sayede, her katmanı ayrı ayrı geliştirmek, test etmek ve değiştirmek kolaylaşır.
+   
+   
 
 
   
