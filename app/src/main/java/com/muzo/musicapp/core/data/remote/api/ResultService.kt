@@ -10,7 +10,7 @@ import retrofit2.http.Query
 
 interface ResultService {
 
-    @GET("search?term=jack+johnson&limit=50&offset=200")
+    @GET("search?term=jack+johnson&limit=50&offset=250")
     suspend fun result():ResponseApi
 
     @GET("search")

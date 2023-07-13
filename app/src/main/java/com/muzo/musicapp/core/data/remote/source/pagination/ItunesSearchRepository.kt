@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface ItunesSearchRepository {
     fun getSearchResult(
         searchWord: String,
-        pageSize: Int = 20,
+        pageSize: Int = 9,
     ): Flow<PagingData<PaginationList>>
 }
